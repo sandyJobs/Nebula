@@ -1,6 +1,8 @@
-import React, { useState, useEffect, useContext } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { Menu, X } from 'lucide-react'
+import { motion, AnimatePresence } from 'framer-motion'
+import MobileMenuPortal from './MobileMenuPortal'
 
 
 const navLinks = [
@@ -22,7 +24,7 @@ const Navbar = () => {
 
   // Close mobile menu when route/hash changes
   React.useEffect(() => {
-    if (open) setOpen(false)
+    setOpen(false)
   }, [location.pathname, location.hash])
 
   // Scrollspy: update active link based on intersection
@@ -45,36 +47,61 @@ const Navbar = () => {
     return () => observer.disconnect()
   }, [])
 
-  return (
-    <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-      <Link to={toWithHash('home')} className="font-montserrat text-xl font-bold bg-ai-gradient bg-clip-text text-transparent">
-        Nebula Studio
-      </Link>
+  const wrapRef = React.useRef(null)
+  const [topOffset, setTopOffset] = useState(64)
+  useEffect(() => {
+    const measure = () => {
+      const el = wrapRef.current
+      if (!el) return
+      const rect = el.getBoundingClientRect()
+      setTopOffset(rect.bottom)
+    }
+    measure()
+    window.addEventListener('resize', measure)
+    return () => window.removeEventListener('resize', measure)
+  }, [])
 
-      <nav className="hidden md:flex items-center gap-6">
+  return (
+    <div ref={wrapRef} className="relative max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+      <motion.div initial={{ opacity: 0, y: -8 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }}>
+        <Link to={toWithHash('home')} className="font-montserrat text-xl font-bold bg-ai-gradient bg-clip-text text-transparent">
+          Nebula Studio
+        </Link>
+      </motion.div>
+
+      <nav className="hidden md:flex items-center space-x-3 relative">
         {navLinks.map((link) => (
-          <Link key={link.id} to={toWithHash(link.id)} className={`transition-colors ${active === link.id ? 'text-textPrimary' : 'text-textSecondary hover:text-textPrimary'}`}>
+          <Link key={link.id} to={toWithHash(link.id)} className={`relative transition-colors ${active === link.id ? 'text-textPrimary' : 'text-textSecondary hover:text-textPrimary'}`}>
             {link.label}
+            {active === link.id && (
+              <motion.span layoutId="navActive" className="absolute -bottom-1 left-0 right-0 h-0.5 bg-gradient-to-r from-electric to-teal" />
+            )}
           </Link>
         ))}
+        
       </nav>
 
       <button aria-label="Toggle menu" className="md:hidden inline-flex items-center justify-center p-2 rounded-md text-textSecondary hover:text-textPrimary transition-colors" onClick={() => setOpen((v) => !v)}>
         {open ? <X size={22} /> : <Menu size={22} />}
       </button>
 
-      {open && (
-        <div className="absolute top-full left-0 right-0 bg-surface/95 backdrop-blur shadow md:hidden">
-          <div className="max-w-6xl mx-auto px-6 py-4 grid gap-3">
-            {navLinks.map((link) => (
-              <Link key={link.id} to={toWithHash(link.id)} className={`py-2 transition-colors ${active === link.id ? 'text-textPrimary' : 'text-textSecondary hover:text-textPrimary'}`}>
-                {link.label}
-              </Link>
-            ))}
-            
-          </div>
-        </div>
-      )}
+      <AnimatePresence initial={false}>
+        {open && (
+          <MobileMenuPortal top={topOffset}>
+            <motion.div initial={{ opacity: 1, y: 0 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 1, y: 0 }}
+              className="bg-surface shadow border-t border-electric/10"
+            >
+              <div className="max-w-6xl mx-auto px-6 py-4 grid gap-3">
+                {navLinks.map((link) => (
+                  <Link key={link.id} to={toWithHash(link.id)} className={`py-2 transition-colors ${active === link.id ? 'text-textPrimary' : 'text-textSecondary hover:text-textPrimary'}`} onClick={() => setOpen(false)}>
+                    {link.label}
+                  </Link>
+                ))}
+              </div>
+            </motion.div>
+          </MobileMenuPortal>
+        )}
+      </AnimatePresence>
     </div>
   )
 }

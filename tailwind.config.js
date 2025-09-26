@@ -8,14 +8,16 @@ export default {
   theme: {
     extend: {
       colors: {
-        background: '#f9fafb',
+        background: '#F5F5F5',
         surface: '#ffffff',
         textPrimary: '#111827',
         textSecondary: '#6b7280',
-        electric: '#3b82f6',
+        // Brand-aligned palette
+        electric: '#2D89FF', // Primary Blue
         teal: '#06b6d4',
-        cta: '#fb923c',
-        highlight: '#84cc16',
+        cta: '#FFB400', // Secondary Gold
+        highlight: '#4CAF50', // Accent Green
+        accent: '#4CAF50',
         purpleGlow: 'rgba(168, 85, 247, 0.15)',
       },
       fontFamily: {
@@ -29,9 +31,12 @@ export default {
       },
       boxShadow: {
         'glow-purple': '0 0 40px 0 rgba(168, 85, 247, 0.15)',
+        'glow-blue': '0 0 48px 0 rgba(45, 137, 255, 0.22)',
+        'glow-gold': '0 0 48px 0 rgba(255, 180, 0, 0.22)',
       },
       backgroundImage: {
-        'ai-gradient': 'linear-gradient(90deg, #3b82f6 0%, #06b6d4 100%)',
+        'ai-gradient': 'linear-gradient(90deg, #2D89FF 0%, #06b6d4 100%)',
+        'brand-gradient': 'linear-gradient(90deg, #2D89FF 0%, #FFB400 100%)',
       },
     },
   },

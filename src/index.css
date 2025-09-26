@@ -28,9 +28,14 @@
 }
 
 @layer utilities {
+  /* Cursor glow trail variables */
+  :root {
+    --cursor-x: 50vw;
+    --cursor-y: 50vh;
+  }
   /* Animated multi-stop gradient for hero backgrounds */
   .animated-gradient {
-    background-image: linear-gradient(120deg, #fb923c, #a855f7, #06b6d4);
+    background-image: linear-gradient(120deg, #FFB400, #a855f7, #2D89FF);
     background-size: 200% 200%;
     animation: gradientShift 10s ease-in-out infinite;
   }
@@ -67,7 +72,7 @@
     padding: 1.5rem; /* p-6 */
     transition: all 200ms ease;
     background: linear-gradient(rgba(255,255,255,0.92), rgba(255,255,255,0.92)) padding-box,
-                linear-gradient(135deg, #3b82f6, #06b6d4) border-box;
+                linear-gradient(135deg, #2D89FF, #06b6d4) border-box;
     border: 1px solid transparent; /* 1px gradient border */
     backdrop-filter: blur(8px) saturate(120%);
     overflow: hidden;
@@ -88,8 +93,8 @@
   /* Variants */
   .card-gradient {
     background: linear-gradient(rgba(255,255,255,0.96), rgba(255,255,255,0.96)) padding-box,
-                linear-gradient(135deg, #3b82f6, #06b6d4) border-box,
-                radial-gradient(120% 120% at 0% 0%, rgba(59,130,246,0.06), transparent 60%) padding-box;
+                linear-gradient(135deg, #2D89FF, #06b6d4) border-box,
+                radial-gradient(120% 120% at 0% 0%, rgba(45,137,255,0.08), transparent 60%) padding-box;
   }
   .card-glow:hover {
     box-shadow: 0 16px 36px rgba(59,130,246,0.20), 0 0 0 1px rgba(59,130,246,0.25);
@@ -102,7 +107,7 @@
     position: absolute;
     top: 0; left: -150%;
     width: 50%; height: 100%;
-    background: linear-gradient(120deg, rgba(255,255,255,0.6), rgba(59,130,246,0.15), transparent);
+    background: linear-gradient(120deg, rgba(255,255,255,0.6), rgba(45,137,255,0.22), transparent);
     transform: skewX(-20deg);
   }
   .sheen:hover::after { animation: sheenSweep 800ms ease; }
@@ -113,7 +118,7 @@
 
   /* Underline glow for links/testimonials */
   .underline-glow {
-    background-image: linear-gradient(90deg, #3b82f6, #06b6d4);
+    background-image: linear-gradient(90deg, #2D89FF, #06b6d4);
     background-size: 0% 2px;
     background-repeat: no-repeat;
     background-position: 0 100%;
@@ -130,10 +135,116 @@
     100% { transform: translateX(-50%); }
   }
 
+  /* Hide scrollbars cross-browser for custom carousels */
+  .no-scrollbar {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+
+  /* Flowing gradient border utility */
+  .flow-border {
+    position: relative;
+    background: linear-gradient(rgba(255,255,255,0.96), rgba(255,255,255,0.96)) padding-box,
+                conic-gradient(from var(--angle, 0deg), #2D89FF, #06b6d4, #FFB400, #2D89FF) border-box;
+    border: 1px solid transparent;
+  }
+  .flow-border::before {
+    content: "";
+    position: absolute; inset: -1px; border-radius: inherit; pointer-events: none;
+    background: conic-gradient(from var(--angle, 0deg), rgba(45,137,255,0.2), rgba(6,182,212,0.2), rgba(255,180,0,0.2), rgba(45,137,255,0.2));
+    mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor; mask-composite: exclude;
+    padding: 1px; border-radius: inherit;
+    filter: blur(6px);
+  }
+  @property --angle { syntax: '<angle>'; inherits: false; initial-value: 0deg; }
+  .flow-animate { animation: rotateBorder 8s linear infinite; }
+  @keyframes rotateBorder { to { --angle: 360deg; } }
+
+  /* Ripple hover utility (position updated via JS on pointermove) */
+  .ripple {
+    position: relative; overflow: hidden;
+  }
+  .ripple::after {
+    content: ""; position: absolute; left: var(--rx, 50%); top: var(--ry, 50%);
+    width: 10px; height: 10px; transform: translate(-50%, -50%);
+    background: radial-gradient(closest-side, rgba(45,137,255,0.25), transparent 70%);
+    border-radius: 9999px; opacity: 0; transition: width 400ms ease, height 400ms ease, opacity 300ms ease;
+    pointer-events: none;
+  }
+  .ripple:hover::after { width: 260px; height: 260px; opacity: 1; }
+
+  /* Breathing animation for icons */
+  .breathing { animation: breathe 2.6s ease-in-out infinite; }
+  @keyframes breathe { 0%,100%{ transform: scale(1);} 50%{ transform: scale(1.06);} }
+
+  /* Masonry columns */
+  .masonry { column-gap: 1rem; }
+  .masonry-2 { column-count: 2; }
+  .masonry-3 { column-count: 3; }
+  .masonry-item { break-inside: avoid; display: inline-block; width: 100%; margin: 0 0 1rem; }
+
+  /* Blob hover for buttons */
+  .blob-hover { position: relative; isolation: isolate; }
+  .blob-hover::before { content: ""; position: absolute; inset: -8px; z-index: -1; filter: blur(20px); border-radius: 20px; opacity: 0; transition: opacity 200ms ease; background: radial-gradient(120px 80px at 20% 0%, rgba(45,137,255,0.25), transparent 60%), radial-gradient(120px 80px at 80% 100%, rgba(255,180,0,0.25), transparent 60%); }
+  .blob-hover:hover::before { opacity: 1; }
+
+  /* Orbit rotation for avatars */
+  .orbit-rotate { animation: orbitRotate 26s linear infinite; }
+  @keyframes orbitRotate { to { transform: rotate(360deg); } }
+
   /* Avatar utilities */
   .avatar {
     @apply w-10 h-10 rounded-full bg-gray-200 shadow;
   }
+  /* Utility: 3D tilt hover */
+  .tilt-hover { transition: transform 200ms ease; }
+  .tilt-hover:hover { transform: perspective(600px) rotateX(2.5deg) rotateY(-2.5deg) translateY(-2px); }
+
+  /* Utility: global cursor spotlight */
+  .spotlight {
+    pointer-events: none;
+    position: fixed;
+    inset: 0;
+    background: radial-gradient(450px 450px at var(--cursor-x) var(--cursor-y), rgba(45,137,255,0.18), transparent 60%);
+    z-index: 5;
+  }
+
+  /* Utility: shimmering text */
+  .shimmer-text {
+    background-image: linear-gradient(90deg, rgba(17,24,39,0.85), rgba(17,24,39,0.85), rgba(45,137,255,0.65), rgba(17,24,39,0.85), rgba(17,24,39,0.85));
+    background-size: 200% 100%;
+    animation: shimmerMove 3s linear infinite;
+  }
+  @keyframes shimmerMove {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+  }
+  /* Utility: shimmering gradient button */
+  .shimmer-button {
+    position: relative;
+    isolation: isolate;
+    background-image: linear-gradient(90deg, #FFB400, #2D89FF, #FFB400);
+    background-size: 200% 100%;
+    animation: shimmerGradient 3.2s linear infinite;
+  }
+  @keyframes shimmerGradient {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 200% 50%; }
+  }
+  /* Subtle pulse glow for CTAs */
+  .btn-pulse {
+    animation: pulseGlow 2.8s ease-in-out infinite;
+  }
+  @keyframes pulseGlow {
+    0%, 100% { box-shadow: 0 0 0 rgba(255, 180, 0, 0); }
+    50% { box-shadow: 0 0 28px rgba(255, 180, 0, 0.35); }
+  }
+  /* Avatar hover glow ring */
+  .avatar-ring { transition: box-shadow 200ms ease, transform 200ms ease; }
+  .avatar-ring:hover { box-shadow: 0 0 0 3px #2D89FF, 0 8px 18px rgba(45,137,255,0.25); transform: translateY(-1px); }
 }
 
 @layer components {
@@ -145,8 +256,72 @@
   }
   /* Default button: white with blue border/text, hover fill blue */
   .btn { @apply bg-white text-electric border border-electric; }
-  .btn:hover { @apply bg-electric text-white; transform: translateY(-1px); }
+  .btn:hover { @apply bg-electric text-white; transform: translateY(-1px); box-shadow: 0 10px 24px rgba(45, 137, 255, 0.25); }
   /* CTA variant: coral fill with subtle glow */
   .btn-cta { @apply bg-cta text-white border border-transparent; }
-  .btn-cta:hover { filter: brightness(0.95); box-shadow: 0 0 24px rgba(251, 146, 60, 0.35); transform: translateY(-1px); }
+  .btn-cta:hover { filter: brightness(0.98); box-shadow: 0 0 28px rgba(255, 180, 0, 0.35); transform: translateY(-1px); }
+}
+
+/* New utilities for icons, abstract backgrounds, and watermark */
+@layer utilities {
+  /* Icon badge base + color variants */
+  .icon-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 3rem; /* w-12 */
+    height: 3rem; /* h-12 */
+    border-radius: 0.75rem; /* rounded-xl */
+    box-shadow: 0 8px 16px rgba(17,24,39,0.06), inset 0 0 0 1px rgba(17,24,39,0.06);
+  }
+  .icon-blue { background: rgba(45,137,255,0.10); color: #2D89FF; }
+  .icon-teal { background: rgba(6,182,212,0.10); color: #06b6d4; }
+  .icon-coral { background: rgba(255,180,0,0.10); color: #FFB400; }
+  .icon-lime { background: rgba(76,175,80,0.10); color: #4CAF50; }
+  .icon-purple { background: rgba(168,85,247,0.10); color: #a855f7; }
+
+  /* Subtle tech grid pattern for cards/sections */
+  .tech-grid {
+    position: relative;
+    background-image:
+      linear-gradient(to right, rgba(45,137,255,0.08) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(6,182,212,0.08) 1px, transparent 1px);
+    background-size: 22px 22px;
+  }
+
+  /* Footer watermark gradient wave */
+  .footer-watermark {
+    position: absolute;
+    inset: auto 0 0 0;
+    height: 240px;
+    background:
+      radial-gradient(60% 120% at 90% 100%, rgba(45,137,255,0.18), transparent 60%),
+      radial-gradient(50% 100% at 10% 100%, rgba(255,180,0,0.12), transparent 60%);
+    pointer-events: none;
+  }
+
+  /* Fluid SVG helper */
+  .svg-fluid { display: block; width: 100%; height: auto; }
+
+  /* Decorative shapes for testimonials */
+  .decor-quote {
+    position: absolute; font-size: 120px; line-height: 1; color: rgba(45,137,255,0.10);
+    user-select: none; pointer-events: none;
+  }
+  .decor-star {
+    position: absolute; width: 10px; height: 10px; border-radius: 9999px;
+    background: radial-gradient(circle, rgba(255,255,255,0.9), rgba(45,137,255,0.35));
+    box-shadow: 0 0 20px rgba(45,137,255,0.35);
+    filter: saturate(120%);
+  }
+  .decor-chat {
+    position: absolute; width: 120px; height: 80px; border-radius: 16px;
+    background: linear-gradient(135deg, rgba(6,182,212,0.10), rgba(168,85,247,0.10));
+    transform: rotate(-6deg);
+    box-shadow: inset 0 0 0 1px rgba(17,24,39,0.06);
+  }
+
+  /* Gentle float for illustrations */
+  .ai-illustration-float { animation: aiFloat 12s ease-in-out infinite; }
+  @keyframes aiFloat { 0%,100% { transform: translateY(0) } 50% { transform: translateY(-10px) } }
 }

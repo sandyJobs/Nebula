@@ -8,6 +8,7 @@ import Process from '../sections/Process'
 import Testimonials from '../sections/Testimonials'
 import CTA from '../sections/CTA'
 import { useLocation } from 'react-router-dom'
+import SectionDivider from '../components/SectionDivider'
 
 const scrollToHash = (hash) => {
   if (!hash) return
@@ -32,11 +33,17 @@ const Home = () => {
   return (
     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.3 }}>
       <Hero />
+      <SectionDivider animated />
       <About />
+      <SectionDivider flip animated />
       <Services />
+      <SectionDivider animated />
       <Portfolio />
+      <SectionDivider flip animated />
       <Process />
+      <SectionDivider animated />
       <Testimonials />
+      <SectionDivider flip animated />
       <CTA />
     </motion.div>
   )
