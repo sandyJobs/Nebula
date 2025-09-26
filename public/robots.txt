@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# Update if you host a sitemap
+Sitemap: https://example.com/sitemap.xml
