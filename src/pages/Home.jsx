@@ -7,6 +7,7 @@ import Portfolio from '../sections/Portfolio'
 import Process from '../sections/Process'
 import Testimonials from '../sections/Testimonials'
 import CTA from '../sections/CTA'
+import VideoShowcase from '../sections/VideoShowcase'
 import { useLocation } from 'react-router-dom'
 import SectionDivider from '../components/SectionDivider'
 
@@ -36,6 +37,8 @@ const Home = () => {
       <SectionDivider animated />
       <About />
       <SectionDivider flip animated />
+      <VideoShowcase />
+      <SectionDivider animated />
       <Services />
       <SectionDivider animated />
       <Portfolio />

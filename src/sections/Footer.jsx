@@ -1,10 +1,14 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import { Github, Linkedin, Twitter } from 'lucide-react'
+import media from '../assets/media'
 
 const Footer = () => {
   return (
     <footer id="footer" className="bg-[#f3f4f6] py-12 mt-12 relative overflow-hidden">
+      <div className="absolute inset-x-0 -top-24 h-48" style={{
+        background: 'linear-gradient(135deg, rgba(45,137,255,0.12), rgba(6,182,212,0.12))'
+      }} />
       <div className="footer-watermark" />
       <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-3 gap-6 text-textSecondary">
         <motion.div initial={{ opacity: 0, y: 8 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.4 }}>

@@ -2,6 +2,7 @@ import React, { useRef, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Star, Quote } from 'lucide-react'
 import AvatarOrbit from '../components/AvatarOrbit'
+import media from '../assets/media'
 
 const testimonials = [
   { quote: 'Their turnaround is insane — delivered in 48 hours.', author: 'Alex Green', avatar: 'https://images.unsplash.com/photo-1502685104226-ee32379fefbe?w=128&h=128&fit=crop&auto=format&q=60' },
@@ -27,11 +28,15 @@ const Testimonials = () => {
 
   return (
     <section id="testimonials" className="bg-surface py-20 scroll-mt-24 relative overflow-hidden">
+      <div className="absolute inset-0 -z-0">
+        <img src={media.hero.banner} alt="Gradient banner" className="w-full h-full object-cover opacity-25" loading="lazy" />
+        <div className="absolute inset-0 bg-gradient-to-b from-white/80 via-white/70 to-white/90" />
+      </div>
       <div className="absolute -top-6 left-4 decor-quote">“</div>
       <div className="absolute top-14 right-10 decor-chat" />
       <div className="absolute bottom-12 left-10 decor-star" />
       <div className="absolute bottom-24 right-16 decor-star" />
-      <div className="max-w-6xl mx-auto px-6">
+      <div className="max-w-6xl mx-auto px-6 relative z-10">
         <motion.h2 className="font-montserrat text-h2 text-textPrimary text-center"
           initial={{ opacity: 0, y: 14 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.4 }}>
           Testimonials

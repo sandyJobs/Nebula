@@ -3,7 +3,8 @@ import { motion, useAnimation, useInView } from 'framer-motion'
 import Magnetic from '../components/Magnetic'
 import Starfield from '../components/Starfield'
 import TextScramble from '../components/TextScramble'
-import HeroTechMesh from '../components/illustrations/HeroTechMesh'
+//import HeroTechMesh from '../components/illustrations/HeroTechMesh'
+import media from '../assets/media'
 
 const Hero = () => {
   const headline = 'Your Invisible Edge in Digital Execution.'
@@ -36,6 +37,20 @@ const Hero = () => {
   }, [controls, isInView])
   return (
     <section id="home" className="relative overflow-hidden bg-surface scroll-mt-24">
+      {/* background video (muted, looped) with dark overlay for readability */}
+      <div className="absolute inset-0 z-0 pointer-events-none">
+        <video
+          className="w-full h-full object-cover"
+          src={media.hero.video}
+          poster={media.hero.poster}
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="metadata"
+        />
+        <div className="absolute inset-0 bg-black/35" />
+      </div>
       <div className="absolute inset-0 animated-gradient opacity-20" />
       {/* extra subtle floating blobs */}
       <motion.div
@@ -58,11 +73,11 @@ const Hero = () => {
         <Starfield className="w-full h-full" density={160} speed={0.3} />
       </div>
       {/* tech mesh illustration: mobile-visible and behind text */}
-      <div className="absolute inset-0 pointer-events-none z-0">
+      {/* <div className="absolute inset-0 pointer-events-none z-0">
         <div className="absolute top-16 left-1/2 -translate-x-1/2 w-[280px] h-[200px] opacity-30 sm:w-[320px] sm:h-[230px] md:top-20 md:w-[420px] md:h-[300px] lg:left-auto lg:right-0 lg:translate-x-0 lg:top-24 lg:w-[520px] lg:h-[360px]">
           <HeroTechMesh />
         </div>
-      </div>
+      </div> */}
       <div className="relative z-10 max-w-6xl mx-auto px-6 py-24 text-center">
         <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-electric/30 bg-white/70 backdrop-blur shadow-sm">
           <span className="w-2 h-2 rounded-full bg-cta animate-pulse" />
@@ -82,7 +97,7 @@ const Hero = () => {
           ))}
         </motion.h1>
         <motion.p
-          className="mt-5 text-textSecondary max-w-2xl mx-auto"
+          className="mt-5 text-gray-300 max-w-2xl mx-auto"
           initial={{ opacity: 0, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -99,7 +114,7 @@ const Hero = () => {
         >
          <div className="flex flex-col gap-5">
 
-          <div className="space-x-2">
+          <div className="space-x-2 flex justify-center">
           <a href="#about" className="btn tilt-hover">Get Started</a>
           <a href="#portfolio" className="btn tilt-hover">See Our Work</a>
           </div>
