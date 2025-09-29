@@ -39,7 +39,7 @@ const Services = () => {
                   <div className="absolute inset-0 p-5 flex flex-col justify-end text-white">
                     <div className={`icon-badge ${s.color} breathing bg-white/90 text-inherit mb-3`}>{React.createElement(s.icon, { size: 20 })}</div>
                     <div className="font-semibold text-lg drop-shadow">{s.label}</div>
-                    <div className="text-sm text-white/90">Efficient, high-quality delivery powered by AI and global specialists.</div>
+                    <div className="text-sm text-white text-bold">Efficient, high-quality delivery powered by AI and global specialists.</div>
                   </div>
                 </motion.div>
               </ParallaxTiltCard>

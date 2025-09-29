@@ -1,4 +1,3 @@
-import React from 'react'
 import { motion } from 'framer-motion'
 import media from '../assets/media'
 
@@ -24,7 +23,7 @@ const VideoShowcase = () => {
         >
           <video
             className="w-full h-[320px] sm:h-[420px] object-cover"
-            src={media.videoShowcase.video}
+            src='https://cdn.pixabay.com/video/2023/10/10/184489-873483996_large.mp4'
             poster={media.videoShowcase.poster}
             autoPlay
             muted

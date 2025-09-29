@@ -3,7 +3,7 @@ import { motion, useInView, useMotionValue, animate } from 'framer-motion'
 
 const formatInteger = (n) => Math.round(n).toLocaleString()
 
-const StatCounter = ({ value = 0, suffix = '', description = '', duration = 2.4, className = '' }) => {
+const StatCounter = ({ value = 0, suffix = '', description = '', duration = 2.4, className = '', descriptionClassName = '' }) => {
   const ref = React.useRef(null)
   const inView = useInView(ref, { once: true, margin: '-20% 0% -20% 0%' })
   const hasAnimatedRef = React.useRef(false)
@@ -42,7 +42,7 @@ const StatCounter = ({ value = 0, suffix = '', description = '', duration = 2.4,
         {suffix ? <span className="ml-0.5 align-baseline text-textPrimary">{suffix}</span> : null}
       </div>
       {description ? (
-        <div className="mt-2 text-textSecondary max-w-sm mx-auto">
+        <div className={`mt-2 max-w-sm mx-auto ${descriptionClassName || 'text-textSecondary'}`}>
           {description}
         </div>
       ) : null}

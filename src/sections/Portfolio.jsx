@@ -29,7 +29,7 @@ const Portfolio = () => {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/25 to-transparent" />
                 <div className="absolute inset-0 p-5 flex flex-col justify-end text-white">
                   <div className="font-semibold text-lg drop-shadow">{it.title}</div>
-                  <div className="text-sm text-white/90">{it.desc}</div>
+                  <div className="text-sm text-white text-bold">{it.desc}</div>
                   <div className="mt-3 inline-flex items-center gap-2 text-electric underline-glow cursor-pointer">View More →</div>
                 </div>
                 <m.video

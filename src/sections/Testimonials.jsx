@@ -1,7 +1,8 @@
-import React, { useRef, useEffect } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
-import { Star, Quote } from 'lucide-react'
-import AvatarOrbit from '../components/AvatarOrbit'
+import Slider from 'react-slick'
+import 'slick-carousel/slick/slick.css'
+import 'slick-carousel/slick/slick-theme.css'
+import { motion } from 'framer-motion'
+import { Star } from 'lucide-react'
 import media from '../assets/media'
 
 const testimonials = [
@@ -13,18 +14,25 @@ const testimonials = [
 const getInitials = (name) => name.split(' ').map(n => n[0]).join('').toUpperCase()
 
 const Testimonials = () => {
-  const trackRef = useRef(null)
-  useEffect(() => {
-    const el = trackRef.current
-    if (!el) return
-    let id
-    const step = () => {
-      el.scrollLeft += 0.5
-      id = requestAnimationFrame(step)
-    }
-    id = requestAnimationFrame(step)
-    return () => cancelAnimationFrame(id)
-  }, [])
+  const settings = {
+    arrows: false,
+    dots: true,
+    infinite: true,
+    autoplay: true,
+    autoplaySpeed: 0,
+    speed: 10000,
+    cssEase: 'linear',
+    pauseOnHover: false,
+    pauseOnFocus: false,
+    swipe: false,
+    draggable: false,
+    touchMove: false,
+    variableWidth: true,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+  }
+
+  const slides = [...testimonials, ...testimonials, ...testimonials]
 
   return (
     <section id="testimonials" className="bg-surface py-20 scroll-mt-24 relative overflow-hidden">
@@ -41,40 +49,36 @@ const Testimonials = () => {
           initial={{ opacity: 0, y: 14 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.4 }}>
           Testimonials
         </motion.h2>
-        <div className="mt-10 overflow-hidden">
-          <div ref={trackRef} className="flex gap-4 overflow-x-auto no-scrollbar py-1" style={{ scrollBehavior: 'auto' }}>
-            {[...testimonials, ...testimonials].map((t, idx) => (
-              <motion.div key={idx} className="min-w-[320px] card flex items-start gap-3"
-                whileHover={{ y: -3 }}
-                initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.3, delay: 0.05 * (idx % testimonials.length) }}>
-                {t.avatar ? (
-                  <img src={t.avatar} alt={t.author} className="w-10 h-10 rounded-full object-cover shadow avatar-ring" />
-                ) : (
-                  <div className="avatar flex items-center justify-center text-textPrimary font-semibold avatar-ring">
-                    {getInitials(t.author)}
+        <div className="mt-10">
+          <Slider {...settings} className="py-6">
+            {slides.map((t, idx) => (
+              <div key={idx} className="px-2 ">
+                <motion.div className="w-[280px] h-[280px] md:w-[320px] md:h-[280px] xl:w-[360px] xl:h-[280px] card flex items-start gap-3"
+                  whileHover={{ y: -3 }}
+                  initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.3, delay: 0.05 * (idx % testimonials.length) }}>
+                  {t.avatar ? (
+                    <img src={t.avatar} alt={t.author} className="w-10 h-10 rounded-full object-cover shadow avatar-ring" />
+                  ) : (
+                    <div className="avatar flex items-center justify-center text-textPrimary font-semibold avatar-ring">
+                      {getInitials(t.author)}
+                    </div>
+                  )}
+                  <div>
+                    <div className="flex items-center gap-1 text-cta mb-1">
+                      {Array.from({ length: 5 }).map((_, i) => (
+                        <Star key={i} size={14} fill="#fb923c" color="#fb923c" />
+                      ))}
+                    </div>
+                    <p className="text-textPrimary">“{t.quote}”</p>
+                    <div className="mt-2 text-textSecondary inline-flex items-center gap-2">
+                      <span className="underline-glow">— {t.author}</span>
+                      <span className="text-xs px-2 py-0.5 rounded-full bg-electric/10 text-electric">Verified</span>
+                    </div>
                   </div>
-                )}
-                <div>
-                  <div className="flex items-center gap-1 text-cta mb-1">
-                    {Array.from({ length: 5 }).map((_, i) => (
-                      <Star key={i} size={14} fill="#fb923c" color="#fb923c" />
-                    ))}
-                  </div>
-                  <p className="text-textPrimary">“{t.quote}”</p>
-                  <div className="mt-2 text-textSecondary inline-flex items-center gap-2">
-                    <span className="underline-glow">— {t.author}</span>
-                    <span className="text-xs px-2 py-0.5 rounded-full bg-electric/10 text-electric">Verified</span>
-                  </div>
-                </div>
-              </motion.div>
+                </motion.div>
+              </div>
             ))}
-          </div>
-        </div>
-        <div className="mt-12 flex items-center justify-center">
-          <AvatarOrbit
-            items={testimonials.map(t => t.avatar).filter(Boolean)}
-            radius={110}
-          />
+          </Slider>
         </div>
       </div>
     </section>

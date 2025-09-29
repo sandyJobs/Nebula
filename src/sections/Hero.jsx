@@ -1,10 +1,10 @@
 import { useEffect, useRef } from 'react'
 import { motion, useAnimation, useInView } from 'framer-motion'
 import Magnetic from '../components/Magnetic'
-import Starfield from '../components/Starfield'
+// import Starfield from '../components/Starfield'
 import TextScramble from '../components/TextScramble'
 //import HeroTechMesh from '../components/illustrations/HeroTechMesh'
-import media from '../assets/media'
+// import media from '../assets/media'
 
 const Hero = () => {
   const headline = 'Your Invisible Edge in Digital Execution.'
@@ -41,8 +41,7 @@ const Hero = () => {
       <div className="absolute inset-0 z-0 pointer-events-none">
         <video
           className="w-full h-full object-cover"
-          src={media.hero.video}
-          poster={media.hero.poster}
+          src="https://cdn.pixabay.com/video/2022/10/12/134591-759723759_large.mp4"
           autoPlay
           muted
           loop
@@ -69,9 +68,9 @@ const Hero = () => {
         transition={{ duration: 20, repeat: Infinity, ease: 'easeInOut' }}
       />
 
-      <div className="absolute inset-0 opacity-40 pointer-events-none">
+      {/* <div className="absolute inset-0 opacity-40 pointer-events-none">
         <Starfield className="w-full h-full" density={160} speed={0.3} />
-      </div>
+      </div> */}
       {/* tech mesh illustration: mobile-visible and behind text */}
       {/* <div className="absolute inset-0 pointer-events-none z-0">
         <div className="absolute top-16 left-1/2 -translate-x-1/2 w-[280px] h-[200px] opacity-30 sm:w-[320px] sm:h-[230px] md:top-20 md:w-[420px] md:h-[300px] lg:left-auto lg:right-0 lg:translate-x-0 lg:top-24 lg:w-[520px] lg:h-[360px]">
@@ -81,10 +80,10 @@ const Hero = () => {
       <div className="relative z-10 max-w-6xl mx-auto px-6 py-24 text-center">
         <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-electric/30 bg-white/70 backdrop-blur shadow-sm">
           <span className="w-2 h-2 rounded-full bg-cta animate-pulse" />
-          <span className="text-sm text-textSecondary">Now accepting Q4 projects</span>
+          <span className="text-sm text-gray-800">Now accepting Q4 projects</span>
         </div>
         <motion.h1
-          className="font-montserrat text-h1 bg-ai-gradient bg-clip-text text-transparent"
+          className="font-montserrat text-yellow-500 bg-ai-gradient bg-clip-text text-transparent"
           variants={container}
           initial="hidden"
           animate={controls}
@@ -97,7 +96,7 @@ const Hero = () => {
           ))}
         </motion.h1>
         <motion.p
-          className="mt-5 text-gray-300 max-w-2xl mx-auto"
+          className="mt-5 text-gray-100 max-w-2xl mx-auto"
           initial={{ opacity: 0, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -126,7 +125,7 @@ const Hero = () => {
 
           
         </motion.div>
-        <div className="mt-10 text-sm text-textSecondary">Trusted by founders and creators worldwide</div>
+        <div className="mt-10 text-sm text-gray-200">Trusted by founders and creators worldwide</div>
       </div>
     </section>
   )

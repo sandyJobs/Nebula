@@ -1,38 +1,89 @@
-import React from 'react'
-import { motion } from 'framer-motion'
-import { Github, Linkedin, Twitter } from 'lucide-react'
-import media from '../assets/media'
+import { motion } from "framer-motion";
+import { Github, Linkedin, Twitter } from "lucide-react";
 
 const Footer = () => {
   return (
-    <footer id="footer" className="bg-[#f3f4f6] py-12 mt-12 relative overflow-hidden">
-      <div className="absolute inset-x-0 -top-24 h-48" style={{
-        background: 'linear-gradient(135deg, rgba(45,137,255,0.12), rgba(6,182,212,0.12))'
-      }} />
-      <div className="footer-watermark" />
-      <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-3 gap-6 text-textSecondary">
-        <motion.div initial={{ opacity: 0, y: 8 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.4 }}>
-          <div className="font-montserrat text-textPrimary font-semibold">Nebula Studio</div>
-          <div className="text-sm mt-1">Invisible excellence, delivered.</div>
+    <footer className="relative bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-slate-300">
+      {/* Decorative gradient line */}
+      <div className="absolute top-0 inset-x-0 h-[2px] bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500" />
+
+      <div className="max-w-6xl mx-auto px-6 py-12 grid md:grid-cols-3 gap-10 relative z-10">
+        {/* Brand */}
+        <motion.div
+          initial={{ opacity: 0, y: 8 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.4 }}
+        >
+          <h3 className="text-xl font-bold text-white font-montserrat">
+            Nebula Studio
+          </h3>
+          <p className="text-sm mt-2 text-white">
+            Invisible excellence, delivered.
+          </p>
         </motion.div>
-        <motion.nav className="grid grid-cols-2 gap-2 text-sm" initial={{ opacity: 0, y: 8 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.4, delay: 0.05 }}>
-          <a className="underline-glow" href="#home">Home</a>
-          <a className="underline-glow" href="#services">Services</a>
-          <a className="underline-glow" href="#portfolio">Portfolio</a>
-          <a className="underline-glow" href="#about">About</a>
-          <a className="underline-glow" href="#cta">Contact</a>
+
+        {/* Navigation */}
+        <motion.nav
+          className="grid grid-cols-2 gap-3 text-sm"
+          initial={{ opacity: 0, y: 8 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.4, delay: 0.05 }}
+        >
+          <a className="hover:text-cyan-400 transition-colors text-white" href="#home">
+            Home
+          </a>
+          <a className="hover:text-cyan-400 transition-colors text-white" href="#services">
+            Services
+          </a>
+          <a className="hover:text-cyan-400 transition-colors text-white" href="#portfolio">
+            Portfolio
+          </a>
+          <a className="hover:text-cyan-400 transition-colors text-white" href="#about">
+            About
+          </a>
+          <a className="hover:text-cyan-400 transition-colors text-white" href="#cta">
+            Contact
+          </a>
         </motion.nav>
-        <motion.div className="text-sm flex items-start gap-4" initial={{ opacity: 0, y: 8 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.4, delay: 0.1 }}>
-          <a className="underline-glow inline-flex items-center gap-2" href="#"><Linkedin size={16}/> LinkedIn</a>
-          <a className="underline-glow inline-flex items-center gap-2" href="#"><Twitter size={16}/> Twitter</a>
-          <a className="underline-glow inline-flex items-center gap-2" href="#"><Github size={16}/> GitHub</a>
+
+        {/* Socials */}
+        <motion.div
+          className="flex space-x-4"
+          initial={{ opacity: 0, y: 8 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.4, delay: 0.1 }}
+        >
+          <a
+            href="#"
+            className="p-2 rounded-full bg-slate-700 hover:bg-cyan-500 transition-colors"
+          >
+            <Linkedin size={18} className="text-white" />
+          </a>
+          <a
+            href="#"
+            className="p-2 rounded-full bg-slate-700 hover:bg-cyan-500 transition-colors"
+          >
+            <Twitter size={18} className="text-white" />
+          </a>
+          <a
+            href="#"
+            className="p-2 rounded-full bg-slate-700 hover:bg-cyan-500 transition-colors"
+          >
+            <Github size={18} className="text-white" />
+          </a>
         </motion.div>
       </div>
-      <div className="text-center text-xs text-textSecondary mt-6">© {new Date().getFullYear()} Nebula Studio Collective.</div>
+
+      {/* Bottom note */}
+      <div className="border-t border-slate-700 mt-6 py-4 text-center text-xs text-white">
+        © {new Date().getFullYear()} Nebula Studio Collective. All rights
+        reserved.
+      </div>
     </footer>
-  )
-}
+  );
+};
 
-export default Footer
-
-
+export default Footer;

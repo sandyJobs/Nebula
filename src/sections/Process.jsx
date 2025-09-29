@@ -1,4 +1,3 @@
-import React from 'react'
 import { motion } from 'framer-motion'
 import ParallaxTiltCard from '../components/ParallaxTiltCard'
 
@@ -19,7 +18,7 @@ const Process = () => {
                 whileHover={{ y: -4 }}
                 initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.35, delay: 0.05 * idx }}>
                 <div className="text-textPrimary font-semibold">{s}</div>
-                <div className="mt-2 text-textSecondary">Clear, transparent stages with glowing connectors.</div>
+                <div className="mt-2 text-bold text-gray-900">Clear, transparent stages with glowing connectors.</div>
                 {idx < steps.length - 1 && (
                   <div className="hidden md:block absolute top-1/2 -right-3 w-6 h-1 bg-gradient-to-r from-electric to-teal animate-pulse" />
                 )}

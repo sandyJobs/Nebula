@@ -1,12 +1,9 @@
 // Centralized media assets (lightweight placeholders). Replace URLs with your own assets when ready.
 const media = {
   hero: {
-    banner:
-      'https://images.unsplash.com/photo-1518779578993-ec3579fee39f?auto=format&fit=crop&w=1600&q=60',
-    poster:
-      'https://images.unsplash.com/photo-1556761175-b413da4baf72?q=80&w=774&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    
     video:
-      'https://assets.mixkit.co/videos/preview/mixkit-falling-bokeh-glitter-2-1489-large.mp4',
+      'https://pixabay.com/videos/cherry-blossoms-blossom-bloom-15614',
   },
   about: {
     image:
