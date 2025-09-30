@@ -37,7 +37,7 @@ const StatCounter = ({ value = 0, suffix = '', description = '', duration = 2.4,
       viewport={{ once: true }}
       transition={{ duration: 0.35 }}
     >
-      <div className="font-montserrat font-bold text-4xl sm:text-5xl text-textPrimary">
+      <div className="font-headline font-bold text-4xl sm:text-5xl text-textPrimary">
         <span>{prefix}{display}</span>
         {suffix ? <span className="ml-0.5 align-baseline text-textPrimary">{suffix}</span> : null}
       </div>

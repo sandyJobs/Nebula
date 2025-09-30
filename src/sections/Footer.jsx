@@ -15,7 +15,7 @@ const Footer = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.4 }}
         >
-          <h3 className="text-xl font-bold text-white font-montserrat">
+          <h3 className="text-xl font-bold text-white font-headline">
             Nebula Studio
           </h3>
           <p className="text-sm mt-2 text-white">

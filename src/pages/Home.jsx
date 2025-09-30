@@ -35,17 +35,17 @@ const Home = () => {
     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.3 }}>
       <Hero />
       <SectionDivider animated />
-      <About />
+      <About className="my-12"/>
       <SectionDivider flip animated />
-      <VideoShowcase />
+      <VideoShowcase className="my-12"/>
       <SectionDivider animated />
-      <Services />
+      <Services className="my-12"/>
       <SectionDivider animated />
-      <Portfolio />
+      <Portfolio className="my-12"/>
       <SectionDivider flip animated />
-      <Process />
+      <Process className="my-12"/>
       <SectionDivider animated />
-      <Testimonials />
+      <Testimonials className="my-12"/>
       <SectionDivider flip animated />
       <CTA />
     </motion.div>

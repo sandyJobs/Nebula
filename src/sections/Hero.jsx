@@ -48,9 +48,26 @@ const Hero = () => {
           playsInline
           preload="metadata"
         />
-        <div className="absolute inset-0 bg-black/35" />
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              'linear-gradient(180deg, rgba(11,16,32,0.78) 0%, rgba(36,28,74,0.58) 55%, rgba(124,58,237,0.45) 100%)',
+          }}
+        />
       </div>
       <div className="absolute inset-0 animated-gradient opacity-20" />
+      {/* subtle shimmer overlay to echo butterfly wing iridescence */}
+      <motion.div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background:
+            'radial-gradient(60% 60% at 20% 30%, rgba(255,255,255,0.06), transparent 60%), radial-gradient(40% 40% at 80% 70%, rgba(124,58,237,0.10), transparent 60%)',
+          mixBlendMode: 'overlay',
+        }}
+        animate={{ opacity: [0.12, 0.2, 0.12] }}
+        transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
+      />
       {/* extra subtle floating blobs */}
       <motion.div
         className="absolute top-1/3 left-10 w-40 h-40 blob blob-orange"
@@ -77,13 +94,13 @@ const Hero = () => {
           <HeroTechMesh />
         </div>
       </div> */}
-      <div className="relative z-10 max-w-6xl mx-auto px-6 py-24 text-center">
+      <div className="relative z-10 max-w-6xl mx-auto px-6 py-28 md:py-32 text-center">
         <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-electric/30 bg-white/70 backdrop-blur shadow-sm">
           <span className="w-2 h-2 rounded-full bg-cta animate-pulse" />
           <span className="text-sm text-gray-800">Now accepting Q4 projects</span>
         </div>
         <motion.h1
-          className="font-montserrat text-yellow-500 bg-ai-gradient bg-clip-text text-transparent"
+          className="font-headline text-yellow-500 bg-ai-gradient bg-clip-text text-transparent"
           variants={container}
           initial="hidden"
           animate={controls}

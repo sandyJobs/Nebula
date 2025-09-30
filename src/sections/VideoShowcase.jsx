@@ -3,10 +3,10 @@ import media from '../assets/media'
 
 const VideoShowcase = () => {
   return (
-    <section id="showreel" className="bg-surface py-16 scroll-mt-24">
+    <section id="showreel" className="bg-surface py-20 md:py-24 scroll-mt-24">
       <div className="max-w-6xl mx-auto px-6">
         <motion.h2
-          className="font-montserrat text-h2 text-textPrimary text-center"
+          className="font-headline text-h2 text-textPrimary text-center"
           initial={{ opacity: 0, y: 14 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -15,7 +15,7 @@ const VideoShowcase = () => {
           Showreel
         </motion.h2>
         <motion.div
-          className="mt-8 rounded-2xl overflow-hidden shadow-lg relative"
+          className="mt-10 rounded-2xl overflow-hidden shadow-lg relative"
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}

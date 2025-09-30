@@ -64,7 +64,7 @@ const Navbar = () => {
   return (
     <div ref={wrapRef} className="relative max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
       <motion.div initial={{ opacity: 0, y: -8 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }}>
-        <Link to={toWithHash('home')} className="font-montserrat text-xl font-bold bg-ai-gradient bg-clip-text text-transparent">
+        <Link to={toWithHash('home')} className="font-headline text-xl font-bold bg-ai-gradient bg-clip-text text-transparent">
           Nebula Studio
         </Link>
       </motion.div>
@@ -74,7 +74,7 @@ const Navbar = () => {
           <Link key={link.id} to={toWithHash(link.id)} className={`relative transition-colors ${active === link.id ? 'text-textPrimary' : 'text-textSecondary hover:text-textPrimary'}`}>
             {link.label}
             {active === link.id && (
-              <motion.span layoutId="navActive" className="absolute -bottom-1 left-0 right-0 h-0.5 bg-gradient-to-r from-electric to-teal" />
+              <motion.span layoutId="navActive" className="absolute -bottom-1 left-0 right-0 h-0.5 bg-gradient-to-r from-accent to-teal" />
             )}
           </Link>
         ))}

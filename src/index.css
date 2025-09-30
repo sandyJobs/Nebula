@@ -118,7 +118,7 @@
 
   /* Underline glow for links/testimonials */
   .underline-glow {
-    background-image: linear-gradient(90deg, #2D89FF, #06b6d4);
+    background-image: linear-gradient(90deg, #7C3AED, #06b6d4);
     background-size: 0% 2px;
     background-repeat: no-repeat;
     background-position: 0 100%;
@@ -226,7 +226,7 @@
   .shimmer-button {
     position: relative;
     isolation: isolate;
-    background-image: linear-gradient(90deg, #FFB400, #2D89FF, #FFB400);
+    background-image: linear-gradient(90deg, #FFB400, #7C3AED, #FFB400);
     background-size: 200% 100%;
     animation: shimmerGradient 3.2s linear infinite;
   }
@@ -244,7 +244,7 @@
   }
   /* Avatar hover glow ring */
   .avatar-ring { transition: box-shadow 200ms ease, transform 200ms ease; }
-  .avatar-ring:hover { box-shadow: 0 0 0 3px #2D89FF, 0 8px 18px rgba(45,137,255,0.25); transform: translateY(-1px); }
+  .avatar-ring:hover { box-shadow: 0 0 0 3px #7C3AED, 0 8px 18px rgba(124,58,237,0.25); transform: translateY(-1px); }
 }
 
 @layer components {
@@ -254,12 +254,14 @@
     line-height: theme('fontSize.cta.1.lineHeight');
     font-weight: 700;
   }
-  /* Default button: white with blue border/text, hover fill blue */
-  .btn { @apply bg-white text-electric border border-electric; }
-  .btn:hover { @apply bg-electric text-white; transform: translateY(-1px); box-shadow: 0 10px 24px rgba(45, 137, 255, 0.25); }
-  /* CTA variant: coral fill with subtle glow */
-  .btn-cta { @apply bg-cta text-white border border-transparent; }
-  .btn-cta:hover { filter: brightness(0.98); box-shadow: 0 0 28px rgba(255, 180, 0, 0.35); transform: translateY(-1px); }
+  /* Primary button: solid accent with subtle shadow and hover lift */
+  .btn { @apply bg-accent text-white border border-transparent; box-shadow: 0 8px 20px rgba(124,58,237,0.18); }
+  .btn:hover { filter: brightness(1.02); transform: translateY(-1px); box-shadow: 0 12px 28px rgba(124,58,237,0.28); }
+  .btn:focus-visible { outline: none; box-shadow: 0 0 0 3px rgba(124,58,237,0.35); }
+  /* CTA variant: gold fill with soft glow and hover morph */
+  .btn-cta { @apply bg-cta text-white border border-transparent; box-shadow: 0 8px 20px rgba(255,180,0,0.18); }
+  .btn-cta:hover { filter: brightness(1.02); transform: translateY(-1px); box-shadow: 0 12px 32px rgba(255,180,0,0.32); }
+  .btn-cta:focus-visible { outline: none; box-shadow: 0 0 0 3px rgba(255,180,0,0.35); }
 }
 
 /* New utilities for icons, abstract backgrounds, and watermark */

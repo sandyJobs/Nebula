@@ -5,13 +5,13 @@ import media from '../assets/media'
 
 const About = () => {
   return (
-    <section id="about" className="bg-surface py-20 scroll-mt-24 relative overflow-hidden">
+    <section id="about" className="bg-surface py-24 md:py-28 scroll-mt-24 relative overflow-hidden">
       <div className="absolute inset-0 pointer-events-none -z-0 opacity-20 hidden md:block">
         <video className="w-full h-full object-cover" src={media.statsVideo} autoPlay muted loop playsInline preload="metadata" />
         <div className="absolute inset-0 bg-white/60" />
       </div>
       <div className="max-w-6xl mx-auto px-6 relative z-10">
-        <motion.h2 className="font-montserrat text-h2 text-textPrimary text-center"
+        <motion.h2 className="font-headline text-h2 text-textPrimary text-center"
           initial={{ opacity: 0, y: 14 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.4 }}>
           About Snapshot
         </motion.h2>
@@ -19,7 +19,7 @@ const About = () => {
           initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.4, delay: 0.1 }}>
           Nebula Studio Collective is a distributed team of elite specialists — blending creativity, tech, and AI-powered workflows. We work behind the scenes so your business shines upfront.
         </motion.p>
-        <div className="mt-12 grid lg:grid-cols-2 gap-8 items-center">
+        <div className="mt-14 grid lg:grid-cols-2 gap-9 items-center">
           <motion.div className="order-2 lg:order-1"
             initial={{ opacity: 0, x: 16 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }}>
             <div className="relative rounded-2xl overflow-hidden shadow card-glow">
@@ -43,7 +43,7 @@ const About = () => {
           </div>
         </div>
 
-        <div className="mt-12 grid sm:grid-cols-3 gap-6">
+        <div className="mt-14 grid sm:grid-cols-3 gap-7">
           <div className="card">
             <div className="icon-badge icon-lime"><Rocket size={18} /></div>
             <StatCounter value={30} suffix="%" className='text-gray-800' descriptionClassName='text-gray-800' description="Increase in new leads in just 6 weeks of launch – B2C business" />

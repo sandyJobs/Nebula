@@ -16,13 +16,13 @@ const services = [
 
 const Services = () => {
   return (
-    <section id="services" className="bg-surface py-20 scroll-mt-24">
+    <section id="services" className="bg-surface py-24 md:py-28 scroll-mt-24">
       <div className="max-w-6xl mx-auto px-6">
-        <motion.h2 className="font-montserrat text-h2 text-textPrimary text-center"
+        <motion.h2 className="font-headline text-h2 text-textPrimary text-center"
           initial={{ opacity: 0, y: 14 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.4 }}>
           What We Do
         </motion.h2>
-        <div className="mt-10 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="mt-12 grid sm:grid-cols-2 lg:grid-cols-3 gap-7">
           {services.map((s, idx) => (
             <ParallaxY key={s.label} from={6} to={-6} className="float-slower">
               <ParallaxTiltCard>

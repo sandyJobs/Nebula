@@ -5,13 +5,13 @@ const steps = ['Discovery', 'Match with Specialist', 'Delivery', 'Ongoing Suppor
 
 const Process = () => {
   return (
-    <section id="process" className="bg-surface py-20 scroll-mt-24">
+    <section id="process" className="bg-surface py-24 md:py-28 scroll-mt-24">
       <div className="max-w-6xl mx-auto px-6">
-        <motion.h2 className="font-montserrat text-h2 text-textPrimary text-center"
+        <motion.h2 className="font-headline text-h2 text-textPrimary text-center"
           initial={{ opacity: 0, y: 14 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.4 }}>
           How We Work
         </motion.h2>
-        <div className="mt-10 grid md:grid-cols-4 gap-6">
+        <div className="mt-12 grid md:grid-cols-4 gap-7">
           {steps.map((s, idx) => (
             <ParallaxTiltCard key={s}>
               <motion.div className="card card-gradient card-glow relative text-center"

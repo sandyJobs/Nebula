@@ -15,9 +15,9 @@ export default {
         // Brand-aligned palette
         electric: '#2D89FF', // Primary Blue
         teal: '#06b6d4',
-        cta: '#FFB400', // Secondary Gold
-        highlight: '#4CAF50', // Accent Green
-        accent: '#4CAF50',
+        cta: '#FFB400', // Secondary Gold (kept for CTA variant)
+        accent: '#7C3AED', // Violet accent inspired by butterfly contrast
+        highlight: '#7C3AED',
         purpleGlow: 'rgba(168, 85, 247, 0.15)',
       },
       fontFamily: {

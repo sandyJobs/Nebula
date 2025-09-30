@@ -35,7 +35,7 @@ const Testimonials = () => {
   const slides = [...testimonials, ...testimonials, ...testimonials]
 
   return (
-    <section id="testimonials" className="bg-surface py-20 scroll-mt-24 relative overflow-hidden">
+    <section id="testimonials" className="bg-surface py-24 md:py-28 scroll-mt-24 relative overflow-hidden">
       <div className="absolute inset-0 -z-0">
         <img src={media.hero.banner} alt="Gradient banner" className="w-full h-full object-cover opacity-25" loading="lazy" />
         <div className="absolute inset-0 bg-gradient-to-b from-white/80 via-white/70 to-white/90" />
@@ -45,11 +45,11 @@ const Testimonials = () => {
       <div className="absolute bottom-12 left-10 decor-star" />
       <div className="absolute bottom-24 right-16 decor-star" />
       <div className="max-w-6xl mx-auto px-6 relative z-10">
-        <motion.h2 className="font-montserrat text-h2 text-textPrimary text-center"
+        <motion.h2 className="font-headline text-h2 text-textPrimary text-center"
           initial={{ opacity: 0, y: 14 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.4 }}>
           Testimonials
         </motion.h2>
-        <div className="mt-10">
+        <div className="mt-12">
           <Slider {...settings} className="py-6">
             {slides.map((t, idx) => (
               <div key={idx} className="px-2 ">
