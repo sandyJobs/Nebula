@@ -5,7 +5,7 @@ import media from '../assets/media'
 
 const About = () => {
   return (
-    <section id="about" className="bg-surface py-24 md:py-28 scroll-mt-24 relative overflow-hidden">
+    <section id="about" className="bg-surface py-36 md:py-44 scroll-mt-24 relative overflow-hidden">
       <div className="absolute inset-0 pointer-events-none -z-0 opacity-20 hidden md:block">
         <video className="w-full h-full object-cover" src={media.statsVideo} autoPlay muted loop playsInline preload="metadata" />
         <div className="absolute inset-0 bg-white/60" />

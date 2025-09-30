@@ -10,6 +10,7 @@ import CTA from '../sections/CTA'
 import VideoShowcase from '../sections/VideoShowcase'
 import { useLocation } from 'react-router-dom'
 import SectionDivider from '../components/SectionDivider'
+import Reveal from '../components/Reveal'
 
 const scrollToHash = (hash) => {
   if (!hash) return
@@ -35,19 +36,33 @@ const Home = () => {
     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.3 }}>
       <Hero />
       <SectionDivider animated />
-      <About className="my-12"/>
+      <Reveal>
+        <About className="my-12"/>
+      </Reveal>
       <SectionDivider flip animated />
-      <VideoShowcase className="my-12"/>
+      <Reveal>
+        <VideoShowcase className="my-12"/>
+      </Reveal>
       <SectionDivider animated />
-      <Services className="my-12"/>
+      <Reveal>
+        <Services className="my-12"/>
+      </Reveal>
       <SectionDivider animated />
-      <Portfolio className="my-12"/>
+      <Reveal>
+        <Portfolio className="my-12"/>
+      </Reveal>
       <SectionDivider flip animated />
-      <Process className="my-12"/>
+      <Reveal>
+        <Process className="my-12"/>
+      </Reveal>
       <SectionDivider animated />
-      <Testimonials className="my-12"/>
+      <Reveal>
+        <Testimonials className="my-12"/>
+      </Reveal>
       <SectionDivider flip animated />
-      <CTA />
+      <Reveal>
+        <CTA />
+      </Reveal>
     </motion.div>
   )
 }

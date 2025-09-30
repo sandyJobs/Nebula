@@ -64,7 +64,7 @@ const Navbar = () => {
   return (
     <div ref={wrapRef} className="relative max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
       <motion.div initial={{ opacity: 0, y: -8 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }}>
-        <Link to={toWithHash('home')} className="font-headline text-xl font-bold bg-ai-gradient bg-clip-text text-transparent">
+        <Link to={toWithHash('home')} className="font-headline text-xl text-slate-400 font-bold bg-ai-gradient bg-clip-text text-transparent">
           Nebula Studio
         </Link>
       </motion.div>

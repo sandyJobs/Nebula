@@ -16,7 +16,7 @@ const services = [
 
 const Services = () => {
   return (
-    <section id="services" className="bg-surface py-24 md:py-28 scroll-mt-24">
+    <section id="services" className="bg-surface py-36 md:py-44 scroll-mt-24">
       <div className="max-w-6xl mx-auto px-6">
         <motion.h2 className="font-headline text-h2 text-textPrimary text-center"
           initial={{ opacity: 0, y: 14 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.4 }}>

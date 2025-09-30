@@ -52,7 +52,7 @@ const Hero = () => {
           className="absolute inset-0"
           style={{
             background:
-              'linear-gradient(180deg, rgba(11,16,32,0.78) 0%, rgba(36,28,74,0.58) 55%, rgba(124,58,237,0.45) 100%)',
+              'linear-gradient(180deg, rgba(11,16,32,0.78) 0%, rgba(45,137,255,0.46) 45%, rgba(124,58,237,0.45) 100%), linear-gradient(180deg, rgba(0,0,0,0) 62%, rgba(0,0,0,0.55) 100%)',
           }}
         />
       </div>
@@ -94,13 +94,13 @@ const Hero = () => {
           <HeroTechMesh />
         </div>
       </div> */}
-      <div className="relative z-10 max-w-6xl mx-auto px-6 py-28 md:py-32 text-center">
+      <div className="relative z-10 max-w-6xl mx-auto px-6 py-24 md:py-36 text-center">
         <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-electric/30 bg-white/70 backdrop-blur shadow-sm">
           <span className="w-2 h-2 rounded-full bg-cta animate-pulse" />
           <span className="text-sm text-gray-800">Now accepting Q4 projects</span>
         </div>
         <motion.h1
-          className="font-headline text-yellow-500 bg-ai-gradient bg-clip-text text-transparent"
+          className="font-hero text-yellow-500 text-5xl md:text-7xl bg-ai-gradient bg-clip-text text-transparent"
           variants={container}
           initial="hidden"
           animate={controls}
@@ -113,7 +113,7 @@ const Hero = () => {
           ))}
         </motion.h1>
         <motion.p
-          className="mt-5 text-gray-100 max-w-2xl mx-auto"
+          className="mt-5 text-gray-100 max-w-2xl mx-auto font-subtext"
           initial={{ opacity: 0, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -136,7 +136,7 @@ const Hero = () => {
           </div>
 
           <Magnetic>
-            <a href="/api/contact/start" className="btn-cta rounded-lg shimmer-button btn-pulse p-3 ">Start a Project</a>
+            <a href="/api/contact/start" className="btn-premium">Start a Project</a>
           </Magnetic>
          </div>
 

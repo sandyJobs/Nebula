@@ -3,7 +3,7 @@ import media from '../assets/media'
 
 const VideoShowcase = () => {
   return (
-    <section id="showreel" className="bg-surface py-20 md:py-24 scroll-mt-24">
+    <section id="showreel" className="bg-surface py-36 md:py-44 scroll-mt-24">
       <div className="max-w-6xl mx-auto px-6">
         <motion.h2
           className="font-headline text-h2 text-textPrimary text-center"

@@ -20,7 +20,7 @@ const SectionDivider = ({ flip = false, className = '', animated = true }) => {
         <motion.path d={animated ? d : d1} fill="url(#grad)" opacity="0.25" />
         <defs>
           <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stopColor="#2D89FF" />
+            <stop offset="0%" stopColor="#FFB400" />
             <stop offset="100%" stopColor="#FFB400" />
           </linearGradient>
         </defs>

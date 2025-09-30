@@ -35,7 +35,7 @@ const Testimonials = () => {
   const slides = [...testimonials, ...testimonials, ...testimonials]
 
   return (
-    <section id="testimonials" className="bg-surface py-24 md:py-28 scroll-mt-24 relative overflow-hidden">
+    <section id="testimonials" className="bg-surface py-36 md:py-44 scroll-mt-24 relative overflow-hidden">
       <div className="absolute inset-0 -z-0">
         <img src={media.hero.banner} alt="Gradient banner" className="w-full h-full object-cover opacity-25" loading="lazy" />
         <div className="absolute inset-0 bg-gradient-to-b from-white/80 via-white/70 to-white/90" />
