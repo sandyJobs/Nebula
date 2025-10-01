@@ -53,11 +53,13 @@ const Testimonials = () => {
     speed: 500,
     slidesToShow: 3,
     slidesToScroll: 1,
+    adaptiveHeight: true,
     nextArrow: <NextArrow />,
     prevArrow: <PrevArrow />,
     appendArrows: (arrows) => (
       <div className="flex justify-center mt-6 space-x-6">{arrows}</div>
-    ),responsive: [
+    ),
+    responsive: [
       {
         breakpoint: 1024, // < 1024px
         settings: {
@@ -68,14 +70,15 @@ const Testimonials = () => {
         breakpoint: 768, // < 768px
         settings: {
           slidesToShow: 1,
+          dots: true,
         },
       },
     ],
   };
 
   return (
-    <section id="testimonials" className="bg-surface py-56 md:py-64 scroll-mt-24 px-5">
-      <div className="max-w-6xl mx-auto px-6">
+    <section id="testimonials" className="bg-surface py-20 md:py-40 scroll-mt-24 px-4">
+      <div className="max-w-6xl mx-auto px-4">
         <motion.h2
           className="font-headline text-h2 text-textPrimary text-center"
           initial={{ opacity: 0, y: 14 }}
@@ -86,7 +89,7 @@ const Testimonials = () => {
           What Our Clients Say
         </motion.h2>
 
-        <div className="mt-16">
+        <div className="mt-8 md:mt-16">
           <Slider {...settings} >
             {testimonials.map((t, idx) => (
               <TestimonialCard key={idx} {...t} />
@@ -101,7 +104,7 @@ const Testimonials = () => {
 // ✅ Custom Arrows that forward props
 const NextArrow = ({ className, style, onClick }) => (
   <button
-    className={`${className} !flex !items-center !justify-center !bg-yellow-300 hover:!bg-yellow-400 !rounded-full !p-3 !shadow-lg`}
+    className={`${className} !flex !items-center !justify-center !bg-yellow-300 hover:!bg-yellow-400 !rounded-full !p-2 sm:!p-3 !shadow-lg`}
     style={{ ...style }}
     onClick={onClick}
   >
@@ -111,7 +114,7 @@ const NextArrow = ({ className, style, onClick }) => (
 
 const PrevArrow = ({ className, style, onClick }) => (
   <button
-    className={`${className} !flex !items-center !justify-center !bg-yellow-300 hover:!bg-yellow-400 !rounded-full !p-3 !shadow-lg`}
+    className={`${className} !flex !items-center !justify-center !bg-yellow-300 hover:!bg-yellow-400 !rounded-full !p-2 sm:!p-3 !shadow-lg`}
     style={{ ...style }}
     onClick={onClick}
   >
@@ -134,7 +137,7 @@ const TestimonialCard = ({ video, quote, author }) => {
 
   return (
     <motion.div
-      className="bg-white my-8 shadow-lg rounded-2xl overflow-hidden flex flex-col mx-3 h-[440px] md:h-[480px] xl:h-[500px]"
+      className="bg-white my-5 md:my-8 shadow-lg rounded-2xl overflow-hidden flex flex-col mx-2 md:mx-3 h-[420px] md:h-[480px] xl:h-[500px]"
       whileHover={{ y: -6 }}
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
@@ -146,14 +149,14 @@ const TestimonialCard = ({ video, quote, author }) => {
         <video
           ref={videoRef}
           src={video}
-          className="w-full h-56 md:h-60 xl:h-64 object-cover"
+          className="w-full h-48 sm:h-56 md:h-60 xl:h-64 object-cover"
           controls={false}
         />
         <button
           onClick={togglePlay}
-          className="absolute inset-0 flex items-center justify-center bg-black/30 hover:bg-black/40 transition"
+          className="absolute inset-0 flex items-center justify-center bg-black/25 hover:bg-black/40 transition"
         >
-          <div className="bg-yellow-400 p-5 rounded-full shadow-lg">
+          <div className="bg-yellow-400 p-4 sm:p-5 rounded-full shadow-lg">
             {playing ? (
               <Pause className="w-8 h-8 text-black" />
             ) : (
@@ -164,10 +167,10 @@ const TestimonialCard = ({ video, quote, author }) => {
       </div>
 
       {/* Quote + Author */}
-      <div className="p-6 flex-1 flex flex-col">
-        <div className="text-yellow-400 text-5xl leading-none mb-3">“</div>
-        <p className="text-gray-700 italic mb-4 flex-1 overflow-hidden" style={{ display: '-webkit-box', WebkitLineClamp: 4, WebkitBoxOrient: 'vertical' }}>{quote}</p>
-        <p className="font-semibold text-gray-900">{author}</p>
+      <div className="p-4 sm:p-6 flex-1 flex flex-col">
+        <div className="text-yellow-400 text-4xl sm:text-5xl leading-none mb-2 sm:mb-3">“</div>
+        <p className="text-gray-700 italic mb-3 sm:mb-4 flex-1 overflow-hidden" style={{ display: '-webkit-box', WebkitLineClamp: 4, WebkitBoxOrient: 'vertical' }}>{quote}</p>
+        <p className="font-semibold text-gray-900 text-sm sm:text-base">{author}</p>
       </div>
     </motion.div>
   );

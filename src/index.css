@@ -30,6 +30,20 @@
 }
 
 @layer utilities {
+  /* Slick slider spacing and responsiveness fixes */
+  .slick-slider { overflow: visible; }
+  .slick-list { margin: 0 -0.5rem; } /* matches mx-2 on cards */
+  @media (min-width: 768px) { .slick-list { margin: 0 -0.75rem; } } /* matches md:mx-3 */
+  .slick-slide > div { padding: 0 0.5rem; }
+  @media (min-width: 768px) { .slick-slide > div { padding: 0 0.75rem; } }
+
+  /* Hide default arrows when disabled by responsive settings */
+  .slick-slider .slick-arrow.slick-hidden { display: none; }
+
+  /* Dots sizing for mobile */
+  .slick-dots li button:before { font-size: 8px; }
+  @media (min-width: 768px) { .slick-dots li button:before { font-size: 10px; } }
+
   /* Subtle premium grain texture */
   .grain {
     position: relative;
