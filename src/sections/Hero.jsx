@@ -1,5 +1,4 @@
-import { useEffect, useRef } from 'react'
-import { motion, useAnimation, useInView } from 'framer-motion'
+import { motion } from 'framer-motion'
 import Magnetic from '../components/Magnetic'
 // import Starfield from '../components/Starfield'
 import TextScramble from '../components/TextScramble'
@@ -16,25 +15,9 @@ const Hero = () => {
     hidden: { y: 18, opacity: 0 },
     visible: { y: 0, opacity: 1, transition: { type: 'spring', stiffness: 420, damping: 22 } },
   }
-  const controls = useAnimation()
-  const h1Ref = useRef(null)
-  const isInView = useInView(h1Ref, { margin: '-30% 0% -30% 0%' })
+  
 
-  useEffect(() => {
-    let cancelled = false
-    const sleep = (ms) => new Promise((r) => setTimeout(r, ms))
-    const loop = async () => {
-      while (!cancelled) {
-        if (!isInView) { await sleep(200); continue }
-        await controls.start('visible')
-        await sleep(900)
-        await controls.start('hidden')
-        await sleep(300)
-      }
-    }
-    loop()
-    return () => { cancelled = true }
-  }, [controls, isInView])
+  
   return (
     <section id="home" className="relative overflow-hidden bg-midnight scroll-mt-24 min-h-screen flex items-center grain">
       {/* background video (muted, looped) with dark overlay for readability */}
@@ -100,11 +83,10 @@ const Hero = () => {
           <span className="text-sm text-gray-800">Now accepting Q4 projects</span>
         </div>
         <motion.h1
-          className="font-hero tracking-tight text-6xl md:text-8xl leading-[1.05] bg-hero-gold bg-clip-text text-transparent drop-shadow"
+          className="font-hero tracking-tight text-6xl md:text-8xl leading-[1.05] bg-hero-gold bg-clip-text text-transparent drop-shadow py-4"
           variants={container}
           initial="hidden"
-          animate={controls}
-          ref={h1Ref}
+          animate="visible"
         >
           {headline.split('').map((ch, i) => (
             <motion.span key={i} variants={letter} style={{ display: 'inline-block' }}>
