@@ -8,16 +8,18 @@ export default {
   theme: {
     extend: {
       colors: {
-        background: '#F5F5F5',
-        surface: '#ffffff',
+        // Base + brand palette (butterfly/orange/teal theme)
+        background: '#0B1020', // Deep midnight for page background
+        surface: '#ffffff', // Keep light surfaces for content sections
         textPrimary: '#111827',
         textSecondary: '#6b7280',
-        // Brand-aligned palette
-        electric: '#2D89FF', // Primary Blue
-        teal: '#06b6d4',
-        cta: '#FFB400', // Butterfly gold — CTA & accent
-        accent: '#FFB400', // Use gold as the primary accent
-        highlight: '#FFB400',
+        electric: '#2D89FF', // Primary Blue accents for links / view more
+        teal: '#26A69A', // Teal accent
+        cta: '#F9A825', // Butterfly gold — CTA & primary accent
+        accent: '#F9A825',
+        highlight: '#F9A825',
+        charcoal: '#0A0E1A',
+        midnight: '#0B1020',
         purpleGlow: 'rgba(168, 85, 247, 0.15)',
       },
       fontFamily: {
@@ -32,11 +34,12 @@ export default {
       boxShadow: {
         'glow-purple': '0 0 40px 0 rgba(168, 85, 247, 0.15)',
         'glow-blue': '0 0 48px 0 rgba(45, 137, 255, 0.22)',
-        'glow-gold': '0 0 48px 0 rgba(255, 180, 0, 0.22)',
+        'glow-gold': '0 0 48px 0 rgba(249, 168, 37, 0.22)',
       },
       backgroundImage: {
-        'ai-gradient': 'linear-gradient(90deg, #2D89FF 0%, #06b6d4 100%)',
-        'brand-gradient': 'linear-gradient(90deg, #2D89FF 0%, #FFB400 100%)',
+        'ai-gradient': 'linear-gradient(90deg, #2D89FF 0%, #26A69A 100%)',
+        'brand-gradient': 'linear-gradient(90deg, #2D89FF 0%, #F9A825 100%)',
+        'hero-gold': 'linear-gradient(90deg, #F9A825 0%, #26A69A 100%)',
       },
     },
   },

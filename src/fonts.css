@@ -30,4 +30,11 @@ html, body {
   font-family: var(--font-body) !important;
 }
 
+/* Headline utility for wide, bold cinematic look */
+.font-headline {
+  font-family: var(--font-hero) !important;
+  font-weight: 900;
+  letter-spacing: -0.025em;
+}
+
 

@@ -36,9 +36,9 @@ const Hero = () => {
     return () => { cancelled = true }
   }, [controls, isInView])
   return (
-    <section id="home" className="relative overflow-hidden bg-surface scroll-mt-24">
+    <section id="home" className="relative overflow-hidden bg-midnight scroll-mt-24 min-h-screen flex items-center grain">
       {/* background video (muted, looped) with dark overlay for readability */}
-      <div className="absolute inset-0 z-0 pointer-events-none">
+      <div className="absolute inset-0 z-0 pointer-events-none" aria-hidden="true">
         <video
           className="w-full h-full object-cover"
           src="https://cdn.pixabay.com/video/2022/10/12/134591-759723759_large.mp4"
@@ -52,14 +52,14 @@ const Hero = () => {
           className="absolute inset-0"
           style={{
             background:
-              'linear-gradient(180deg, rgba(11,16,32,0.78) 0%, rgba(45,137,255,0.46) 45%, rgba(124,58,237,0.45) 100%), linear-gradient(180deg, rgba(0,0,0,0) 62%, rgba(0,0,0,0.55) 100%)',
+              'linear-gradient(180deg, rgba(11,16,32,0.85) 0%, rgba(11,16,32,0.55) 40%, rgba(11,16,32,0.35) 70%, rgba(11,16,32,0.55) 100%), linear-gradient(180deg, rgba(249,168,37,0.08) 0%, rgba(38,166,154,0.06) 50%, rgba(0,0,0,0) 100%)',
           }}
         />
       </div>
-      <div className="absolute inset-0 animated-gradient opacity-20" />
+      <div className="absolute inset-0 -z-10 animated-gradient opacity-20 pointer-events-none" aria-hidden="true" />
       {/* subtle shimmer overlay to echo butterfly wing iridescence */}
       <motion.div
-        className="absolute inset-0 pointer-events-none"
+        className="absolute inset-0 -z-10 pointer-events-none"
         style={{
           background:
             'radial-gradient(60% 60% at 20% 30%, rgba(255,255,255,0.06), transparent 60%), radial-gradient(40% 40% at 80% 70%, rgba(124,58,237,0.10), transparent 60%)',
@@ -70,17 +70,17 @@ const Hero = () => {
       />
       {/* extra subtle floating blobs */}
       <motion.div
-        className="absolute top-1/3 left-10 w-40 h-40 blob blob-orange"
+        className="absolute top-1/3 left-10 w-40 h-40 blob blob-orange -z-10 pointer-events-none"
         animate={{ y: [0, -10, 0], x: [0, 6, 0], opacity: [0.18, 0.28, 0.18] }}
         transition={{ duration: 18, repeat: Infinity, ease: 'easeInOut' }}
       />
       <motion.div
-        className="absolute -top-24 -left-16 w-80 h-80 blob blob-blue"
+        className="absolute -top-24 -left-16 w-80 h-80 blob blob-blue -z-10 pointer-events-none"
         animate={{ y: [0, -16, 0], x: [0, 8, 0], scale: [1, 1.03, 1] }}
         transition={{ duration: 16, repeat: Infinity, ease: 'easeInOut' }}
       />
       <motion.div
-        className="absolute -bottom-12 -right-8 w-72 h-72 blob blob-teal"
+        className="absolute -bottom-12 -right-8 w-72 h-72 blob blob-teal -z-10 pointer-events-none"
         animate={{ y: [0, -12, 0], x: [0, -6, 0], scale: [1, 1.02, 1] }}
         transition={{ duration: 20, repeat: Infinity, ease: 'easeInOut' }}
       />
@@ -94,13 +94,13 @@ const Hero = () => {
           <HeroTechMesh />
         </div>
       </div> */}
-      <div className="relative z-10 max-w-6xl mx-auto px-6 py-24 md:py-36 text-center">
-        <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-electric/30 bg-white/70 backdrop-blur shadow-sm">
+      <div className="relative z-20 max-w-6xl mx-auto px-6 py-24 md:py-36 text-center">
+        <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-electric/30 bg-white/80 backdrop-blur shadow-sm">
           <span className="w-2 h-2 rounded-full bg-cta animate-pulse" />
           <span className="text-sm text-gray-800">Now accepting Q4 projects</span>
         </div>
         <motion.h1
-          className="font-hero text-yellow-500 text-5xl md:text-7xl bg-ai-gradient bg-clip-text text-transparent"
+          className="font-hero tracking-tight text-6xl md:text-8xl leading-[1.05] bg-hero-gold bg-clip-text text-transparent drop-shadow"
           variants={container}
           initial="hidden"
           animate={controls}
@@ -113,7 +113,7 @@ const Hero = () => {
           ))}
         </motion.h1>
         <motion.p
-          className="mt-5 text-gray-100 max-w-2xl mx-auto font-subtext"
+          className="mt-5 text-gray-100/90 max-w-2xl mx-auto font-subtext"
           initial={{ opacity: 0, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -128,11 +128,11 @@ const Hero = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.4, ease: 'easeOut', delay: 0.2 }}
         >
-         <div className="flex flex-col gap-5">
+        <div className="flex flex-col gap-5">
 
-          <div className="space-x-2 flex justify-center">
-          <a href="#about" className="btn tilt-hover">Get Started</a>
-          <a href="#portfolio" className="btn tilt-hover">See Our Work</a>
+          <div className="flex justify-center gap-4">
+          <motion.a whileHover={{ scale: 1.05, y: -2 }} whileTap={{ scale: 0.98 }} href="#about" className="btn">Get Started</motion.a>
+          <motion.a whileHover={{ scale: 1.05, y: -2 }} whileTap={{ scale: 0.98 }} href="#portfolio" className="btn">See Our Work</motion.a>
           </div>
 
           <Magnetic>
@@ -149,5 +149,3 @@ const Hero = () => {
 }
 
 export default Hero
-
-

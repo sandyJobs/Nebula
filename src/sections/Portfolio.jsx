@@ -8,13 +8,13 @@ const items = media.portfolio
 
 const Portfolio = () => {
   return (
-    <section id="portfolio" className="bg-surface py-36 md:py-44 scroll-mt-24">
+    <section id="portfolio" className="bg-surface py-56 md:py-64 scroll-mt-24">
       <div className="max-w-6xl mx-auto px-6">
         <motion.h2 className="font-headline text-h2 text-textPrimary text-center"
           initial={{ opacity: 0, y: 14 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.4 }}>
           Portfolio
         </motion.h2>
-        <div className="mt-12 masonry masonry-3 flex flex-col md:flex-row ">
+        <div className="mt-16 masonry masonry-3 flex flex-col md:flex-row ">
           {items.map((it, idx) => (
             <ParallaxTiltCard key={it.title}>
               <motion.div
