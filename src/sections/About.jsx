@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import StatCounter from '../components/StatCounter'
+import MetricCounter from '../components/MetricCounter'
 import { Clock, Bot, Globe2, Ghost, Rocket, TrendingUp, GraduationCap } from 'lucide-react'
 import media from '../assets/media'
 
@@ -23,7 +23,7 @@ const About = () => {
           <motion.div className="order-2 lg:order-1"
             initial={{ opacity: 0, x: 16 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }}>
             <div className="relative rounded-2xl overflow-hidden shadow card-glow">
-              <img src={media.about.image} alt="About Nebula Studio" className="w-full h-[320px] object-cover md:h-[500px]" loading="lazy" />
+              <img src={media.about.image} alt="About Nebula Studio" className="w-full h-[320px] object-cover md:h-[600px]" loading="lazy" />
               <div className="absolute inset-0 bg-gradient-to-tr from-black/30 via-transparent to-black/20" />
             </div>
           </motion.div>
@@ -46,15 +46,15 @@ const About = () => {
         <div className="mt-20 grid sm:grid-cols-3 gap-10">
           <div className="card">
             <div className="icon-badge icon-lime"><Rocket size={18} /></div>
-            <StatCounter value={30} suffix="%" className='text-gray-800' descriptionClassName='text-gray-800' description="Increase in new leads in just 6 weeks of launch – B2C business" />
+            <MetricCounter value={30} suffix="%" className='text-gray-800' descriptionClassName='text-gray-800' description="Increase in new leads in just 6 weeks of launch – B2C business" />
           </div>
           <div className="card">
             <div className="icon-badge icon-coral"><TrendingUp size={18} /></div>
-            <StatCounter value={408} suffix="%" descriptionClassName='text-gray-800' description="Increase in conversion since launch – B2B service business" />
+            <MetricCounter value={408} suffix="%" descriptionClassName='text-gray-800' description="Increase in conversion since launch – B2B service business" />
           </div>
           <div className="card">
             <div className="icon-badge icon-blue"><GraduationCap size={18} /></div>
-            <StatCounter value={4} suffix="x" descriptionClassName='text-gray-800' description="Greater user engagement on the day of launch – Education industry" />
+            <MetricCounter value={4} suffix="x" descriptionClassName='text-gray-800' description="Greater user engagement on the day of launch – Education industry" />
           </div>
         </div>
       </div>

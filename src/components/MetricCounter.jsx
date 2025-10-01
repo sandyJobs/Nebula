@@ -3,7 +3,7 @@ import { motion, useInView, useMotionValue, animate } from 'framer-motion'
 
 const formatInteger = (n) => Math.round(n).toLocaleString()
 
-const StatCounter = ({ value = 0, suffix = '', description = '', duration = 2.4, className = '', descriptionClassName = '' }) => {
+const MetricCounter = ({ value = 0, suffix = '', description = '', duration = 2.4, className = '', descriptionClassName = '' }) => {
   const ref = React.useRef(null)
   const inView = useInView(ref, { once: true, margin: '-20% 0% -20% 0%' })
   const hasAnimatedRef = React.useRef(false)
@@ -25,7 +25,6 @@ const StatCounter = ({ value = 0, suffix = '', description = '', duration = 2.4,
     return () => controls?.stop()
   }, [inView, count, value, duration])
 
-  // Optional: show "+" for small positive percentages like +30%
   const prefix = suffix === '%' && value > 0 && value <= 100 ? '+' : ''
 
   return (
@@ -50,6 +49,6 @@ const StatCounter = ({ value = 0, suffix = '', description = '', duration = 2.4,
   )
 }
 
-export default StatCounter
+export default MetricCounter
 
 
