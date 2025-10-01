@@ -33,7 +33,7 @@ const Home = () => {
   }, [location.hash])
 
   return (
-    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.3 }}>
+    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.3 }} className="bg-gradient-to-b from-gray-100 to-white">
       <Hero />
       <SectionDivider animated />
       <Reveal>

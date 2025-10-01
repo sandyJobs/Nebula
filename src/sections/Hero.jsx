@@ -30,12 +30,13 @@ const Hero = () => {
           loop
           playsInline
           preload="metadata"
+          style={{ filter: 'saturate(1.1) sepia(0.18) hue-rotate(-10deg) brightness(1.03) contrast(1.03)' }}
         />
         <div
           className="absolute inset-0"
           style={{
             background:
-              'linear-gradient(180deg, rgba(11,16,32,0.85) 0%, rgba(11,16,32,0.55) 40%, rgba(11,16,32,0.35) 70%, rgba(11,16,32,0.55) 100%), linear-gradient(180deg, rgba(249,168,37,0.08) 0%, rgba(38,166,154,0.06) 50%, rgba(0,0,0,0) 100%)',
+              'linear-gradient(180deg, rgba(0,0,0,0.30) 0%, rgba(0,0,0,0.18) 30%, rgba(0,0,0,0.00) 100%), radial-gradient(60% 60% at 50% 0%, rgba(249,168,37,0.12), transparent 70%)',
           }}
         />
       </div>
@@ -77,7 +78,7 @@ const Hero = () => {
           <HeroTechMesh />
         </div>
       </div> */}
-      <div className="relative z-20 max-w-6xl mx-auto px-6 py-24 md:py-36 text-center">
+      <div className="relative z-20 max-w-6xl mx-auto px-6 py-32 md:py-40 lg:py-44 text-center">
         <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-electric/30 bg-white/80 backdrop-blur shadow-sm">
           <span className="w-2 h-2 rounded-full bg-cta animate-pulse" />
           <span className="text-sm text-gray-800">Now accepting Q4 projects</span>
@@ -87,6 +88,7 @@ const Hero = () => {
           variants={container}
           initial="hidden"
           animate="visible"
+          transition={{ delay: 0.05 }}
         >
           {headline.split('').map((ch, i) => (
             <motion.span key={i} variants={letter} style={{ display: 'inline-block' }}>
@@ -95,26 +97,26 @@ const Hero = () => {
           ))}
         </motion.h1>
         <motion.p
-          className="mt-5 text-gray-100/90 max-w-2xl mx-auto font-subtext"
+          className="mt-8 md:mt-10 lg:mt-12 text-white max-w-2xl mx-auto font-subtext font-bold leading-relaxed md:leading-loose"
           initial={{ opacity: 0, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.45, ease: 'easeOut', delay: 0.1 }}
+          transition={{ duration: 0.45, ease: 'easeOut', delay: 0.3 }}
         >
           From automation to creative media — we scale your brand silently, efficiently, and globally.
         </motion.p>
         <motion.div
-          className="mt-8 flex items-center justify-center gap-4"
+          className="mt-10 md:mt-12 lg:mt-16 flex items-center justify-center gap-4"
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.4, ease: 'easeOut', delay: 0.2 }}
+          transition={{ duration: 0.4, ease: 'easeOut', delay: 0.4 }}
         >
         <div className="flex flex-col gap-5">
 
           <div className="flex justify-center gap-4">
-          <motion.a whileHover={{ scale: 1.05, y: -2 }} whileTap={{ scale: 0.98 }} href="#about" className="btn">Get Started</motion.a>
-          <motion.a whileHover={{ scale: 1.05, y: -2 }} whileTap={{ scale: 0.98 }} href="#portfolio" className="btn">See Our Work</motion.a>
+          <motion.a whileHover={{ scale: 1.05, y: -2 }} whileTap={{ scale: 0.98 }} href="#about" className="btn btn-cta">Get Started</motion.a>
+          <motion.a whileHover={{ scale: 1.05, y: -2 }} whileTap={{ scale: 0.98 }} href="#portfolio" className="btn btn-teal">See Our Work</motion.a>
           </div>
 
           <Magnetic>
@@ -124,7 +126,7 @@ const Hero = () => {
 
           
         </motion.div>
-        <div className="mt-10 text-sm text-gray-200">Trusted by founders and creators worldwide</div>
+        <div className="mt-10 text-sm text-gray-500">Trusted by founders and creators worldwide</div>
       </div>
     </section>
   )
