@@ -57,15 +57,24 @@ const Testimonials = () => {
     prevArrow: <PrevArrow />,
     appendArrows: (arrows) => (
       <div className="flex justify-center mt-6 space-x-6">{arrows}</div>
-    ),
-    responsive: [
-      { breakpoint: 1024, settings: { slidesToShow: 2 } },
-      { breakpoint: 768, settings: { slidesToShow: 1 } },
+    ),responsive: [
+      {
+        breakpoint: 1024, // < 1024px
+        settings: {
+          slidesToShow: 2,
+        },
+      },
+      {
+        breakpoint: 768, // < 768px
+        settings: {
+          slidesToShow: 1,
+        },
+      },
     ],
   };
 
   return (
-    <section id="testimonials" className="bg-surface py-56 md:py-64 scroll-mt-24">
+    <section id="testimonials" className="bg-surface py-56 md:py-64 scroll-mt-24 px-5">
       <div className="max-w-6xl mx-auto px-6">
         <motion.h2
           className="font-headline text-h2 text-textPrimary text-center"

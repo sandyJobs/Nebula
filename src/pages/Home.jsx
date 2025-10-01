@@ -57,7 +57,7 @@ const Home = () => {
       </Reveal>
       <SectionDivider animated />
       <Reveal>
-        <Testimonials className="my-12"/>
+        <Testimonials className="my-12 px-6"/>
       </Reveal>
       <SectionDivider flip animated />
       <Reveal>

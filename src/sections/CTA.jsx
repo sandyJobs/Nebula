@@ -55,7 +55,7 @@ const CTA = () => {
             Get a free 15‑minute consult. No pressure, clear next steps.
           </motion.p>
           <motion.div
-            className="mt-6 flex items-center justify-center gap-4 ripple blob-hover"
+            className="py-4 flex flex-col md:flex-row items-center justify-center gap-4 ripple blob-hover"
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -66,7 +66,7 @@ const CTA = () => {
               <a href="/api/contact/start" aria-label="Book a strategy call" className="btn-premium btn-pulse">Book a Call</a>
             </Magnetic>
             <Magnetic>
-              <a href="#services" aria-label="View our capabilities" className="btn-outline p-2 rounded-md">View Capabilities</a>
+              <a href="#services" aria-label="View our capabilities" className="btn-outline p-3 rounded-md w-full md:w-auto">View Capabilities</a>
             </Magnetic>
           </motion.div>
           <div className="mt-3 text-sm text-gray-700">No spam. 24h response time.</div>
