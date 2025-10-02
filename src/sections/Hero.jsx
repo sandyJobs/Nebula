@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion'
 import { useEffect } from 'react'
-import Magnetic from '../components/Magnetic'
+// import Magnetic from '../components/Magnetic'
 // import Starfield from '../components/Starfield'
 import TextScramble from '../components/TextScramble'
 //import HeroTechMesh from '../components/illustrations/HeroTechMesh'
@@ -56,9 +56,9 @@ const Hero = () => {
         <motion.div
           className="cinematic-overlay pointer-events-none"
           aria-hidden="true"
-          animate={{ y: [0, -10, 0, 8, 0], opacity: [0.95, 1, 0.95, 1] }}
+          animate={{ y: [0, -10, 0, 8, 0] }}
           transition={{ duration: 16, repeat: Infinity, ease: 'easeInOut' }}
-          style={{ willChange: 'transform, opacity' }}
+          style={{ willChange: 'transform' }}
         />
         <motion.div
           className="noise-overlay pointer-events-none"
@@ -123,7 +123,7 @@ const Hero = () => {
           ))}
         </motion.h1>
         <motion.p
-          className="mt-6 md:mt-7 lg:mt-8 text-[#d1d1d1] max-w-2xl mx-auto font-subtext text-[1.25rem] leading-[1.6]"
+          className="mt-6 md:mt-7 lg:mt-8 text-white/90 max-w-2xl mx-auto font-subtext text-[1.25rem] leading-[1.6]"
           initial={{ opacity: 0, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -142,17 +142,17 @@ const Hero = () => {
 
           <div className="flex flex-col md:flex-row justify-center gap-4 ">
           <motion.a whileHover={{ scale: 1.05, y: -2 }} whileTap={{ scale: 0.98 }} href="#about" className="btn-premium btn-cta">Get Started</motion.a>
-          <motion.a whileHover={{ scale: 1.05, y: -2 }} whileTap={{ scale: 0.98 }} href="#portfolio" className="btn btn-teal">See Our Work</motion.a>
+          <motion.a whileHover={{ scale: 1.05, y: -2 }} whileTap={{ scale: 0.98 }} href="#portfolio" className="btn-premium btn-cta">See Our Work</motion.a>
           </div>
 
-          <Magnetic>
+          {/* <Magnetic>
             <a href="/api/contact/start" className="btn-premium">Start a Project</a>
-          </Magnetic>
+          </Magnetic> */}
          </div>
 
           
         </motion.div>
-        <div className="mt-10 text-sm text-gray-200">Trusted by founders and creators worldwide</div>
+        <div className="mt-10 text-sm text-white/90">Trusted by founders and creators worldwide</div>
       </div>
     </section>
   )

@@ -64,8 +64,8 @@ const Testimonials = () => {
   
 
   return (
-    <section id="testimonials" className="bg-surface py-20 md:py-40 scroll-mt-24 px-8">
-      <div className="max-w-6xl mx-auto px-4">
+    <section id="testimonials" className="bg-surface py-20 md:py-40 scroll-mt-24 ">
+      <div className="max-w-6xl mx-auto px-1">
         <motion.h2
           className="font-headline text-h2 text-textPrimary text-center"
           initial={{ opacity: 0, y: 14 }}
@@ -86,7 +86,7 @@ const Testimonials = () => {
                 {testimonials.map((t, idx) => (
                   <div
                     key={idx}
-                    className="flex-shrink-0 px-2 md:px-3"
+                    className="flex-shrink-0 px-2 md:px-1"
                     style={{ width: `${100 / slidesToShow}%` }}
                   >
                     <TestimonialCard {...t} />
@@ -151,7 +151,7 @@ const TestimonialCard = ({ video, quote, author }) => {
 
   return (
     <motion.div
-      className="bg-white my-5 md:my-8 shadow-lg rounded-2xl overflow-hidden flex flex-col mx-2 md:mx-3 h-[420px] md:h-[480px] xl:h-[500px]"
+      className="bg-white my-5 md:my-8 pb-2 shadow-lg rounded-2xl overflow-hidden flex flex-col mx-2 md:mx-1 h-[420px] md:h-[480px] xl:h-[500px]"
       whileHover={{ y: -6 }}
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}

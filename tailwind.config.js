@@ -39,7 +39,7 @@ export default {
       backgroundImage: {
         'ai-gradient': 'linear-gradient(90deg, #2D89FF 0%, #26A69A 100%)',
         'brand-gradient': 'linear-gradient(90deg, #2D89FF 0%, #F9A825 100%)',
-        'hero-gold': 'linear-gradient(90deg, #F9A825 0%, #F9A825 0%)',
+        'hero-gold': 'linear-gradient(90deg, #FFC94D 0%, #FFC94D 0%)',
       },
     },
   },

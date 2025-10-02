@@ -57,7 +57,7 @@
   /* Cinematic gradient overlay: dark navy to black (~60% opacity) */
   .cinematic-overlay {
     position: absolute; inset: 0; pointer-events: none; z-index: 0;
-    background: linear-gradient(180deg, rgba(10,14,26,0.60) 0%, rgba(5,7,14,0.60) 100%);
+    background: linear-gradient(180deg, rgba(10,14,26,0.35) 0%, rgba(5,7,14,0.35) 100%);
     mix-blend-mode: multiply;
   }
 
