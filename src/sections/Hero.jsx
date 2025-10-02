@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion'
+import { useEffect } from 'react'
 import Magnetic from '../components/Magnetic'
 // import Starfield from '../components/Starfield'
 import TextScramble from '../components/TextScramble'
@@ -15,30 +16,39 @@ const Hero = () => {
     hidden: { y: 18, opacity: 0 },
     visible: { y: 0, opacity: 1, transition: { type: 'spring', stiffness: 420, damping: 22 } },
   }
-  
+  const wordContainer = {
+    hidden: {},
+    visible: { transition: { staggerChildren: 0.055 } },
+  }
+  const words = headline.split(' ')
 
-  
+  // simple parallax: update CSS variable based on scroll
+  useEffect(() => {
+    const updateParallax = () => {
+      const y = (window.scrollY || 0) * -0.12
+      document.documentElement.style.setProperty('--parallax-y', `${y}px`)
+    }
+    updateParallax()
+    window.addEventListener('scroll', updateParallax, { passive: true })
+    return () => window.removeEventListener('scroll', updateParallax)
+  }, [])
+
   return (
     <section id="home" className="relative overflow-hidden bg-midnight scroll-mt-24 min-h-screen flex items-center grain">
       {/* background video (muted, looped) with dark overlay for readability */}
-      <div className="absolute inset-0 z-0 pointer-events-none" aria-hidden="true">
+      <div className="absolute inset-0 z-0" aria-hidden="true">
         <video
-          className="w-full h-full object-cover"
+          className="w-full h-full object-cover parallax-y"
           src="https://cdn.pixabay.com/video/2022/10/12/134591-759723759_large.mp4"
           autoPlay
           muted
           loop
           playsInline
           preload="metadata"
-          style={{ filter: 'saturate(1.1) sepia(0.18) hue-rotate(-10deg) brightness(1.03) contrast(1.03)' }}
+          style={{ filter: 'saturate(1.08) sepia(0.12) hue-rotate(-8deg) brightness(1.02) contrast(1.03)' }}
         />
-        <div
-          className="absolute inset-0"
-          style={{
-            background:
-              'linear-gradient(180deg, rgba(0,0,0,0.30) 0%, rgba(0,0,0,0.18) 30%, rgba(0,0,0,0.00) 100%), radial-gradient(60% 60% at 50% 0%, rgba(249,168,37,0.12), transparent 70%)',
-          }}
-        />
+        <div className="cinematic-overlay" />
+        <div className="noise-overlay" />
       </div>
       <div className="absolute inset-0 -z-10 animated-gradient opacity-20 pointer-events-none" aria-hidden="true" />
       {/* subtle shimmer overlay to echo butterfly wing iridescence */}
@@ -84,20 +94,28 @@ const Hero = () => {
           <span className="text-sm text-gray-800">Now accepting Q4 projects</span>
         </div>
         <motion.h1
-          className="font-hero tracking-tight text-6xl md:text-8xl leading-[1.05] bg-hero-gold bg-clip-text text-transparent drop-shadow py-4"
+          className="font-hero tracking-[0.5px] [font-variation-settings:'wght'_800] text-[clamp(2.5rem,5vw,4.5rem) md:text-[clamp(4rem,5vw,4.5rem)] leading-[1.1] bg-hero-gold bg-clip-text text-transparent drop-shadow py-4 break-normal"
           variants={container}
           initial="hidden"
           animate="visible"
           transition={{ delay: 0.05 }}
+          style={{ hyphens: 'none', WebkitHyphens: 'none', msHyphens: 'none', wordBreak: 'normal', overflowWrap: 'normal', textWrap: 'balance' }}
         >
-          {headline.split('').map((ch, i) => (
-            <motion.span key={i} variants={letter} style={{ display: 'inline-block' }}>
-              <TextScramble text={ch === ' ' ? '\u00A0' : ch} duration={420} />
-            </motion.span>
+          {words.map((word, wi) => (
+            <span key={`w-${wi}`} className="inline">
+              <motion.span variants={wordContainer} className="inline-block whitespace-nowrap">
+                {word.split('').map((ch, ci) => (
+                  <motion.span key={`c-${wi}-${ci}`} variants={letter} style={{ display: 'inline-block' }}>
+                    <TextScramble text={ch} duration={420} />
+                  </motion.span>
+                ))}
+              </motion.span>
+              {wi < words.length - 1 ? ' ' : null}
+            </span>
           ))}
         </motion.h1>
         <motion.p
-          className="mt-8 md:mt-10 lg:mt-12 text-white max-w-2xl mx-auto font-subtext font-bold leading-relaxed md:leading-loose"
+          className="mt-6 md:mt-7 lg:mt-8 text-[#d1d1d1] max-w-2xl mx-auto font-subtext text-[1.25rem] leading-[1.6]"
           initial={{ opacity: 0, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -106,7 +124,7 @@ const Hero = () => {
           From automation to creative media — we scale your brand silently, efficiently, and globally.
         </motion.p>
         <motion.div
-          className="mt-10 md:mt-12 lg:mt-16 flex items-center justify-center gap-4"
+          className="mt-7 flex items-center justify-center gap-5"
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -126,7 +144,7 @@ const Hero = () => {
 
           
         </motion.div>
-        <div className="mt-10 text-sm text-gray-500">Trusted by founders and creators worldwide</div>
+        <div className="mt-10 text-sm text-gray-200">Trusted by founders and creators worldwide</div>
       </div>
     </section>
   )
