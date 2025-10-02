@@ -34,7 +34,7 @@ const VideoShowcase = () => {
           {/* Blue-to-teal overlay to unify with brand; also add subtle gold edge */}
           <div className="absolute inset-0" style={{ background: 'linear-gradient(180deg, rgba(13,18,32,0.55) 0%, rgba(13,18,32,0.35) 40%, rgba(13,18,32,0.15) 100%), linear-gradient(90deg, rgba(45,137,255,0.10), rgba(38,166,154,0.12))' }} />
           <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
-          <div className="absolute bottom-4 right-4 text-electric text-sm font-semibold underline-glow cursor-pointer">View More →</div>
+          <div className="absolute bottom-4 right-4 text-yellow-400 text-sm font-semibold underline-glow cursor-pointer">View More →</div>
         </motion.div>
       </div>
     </section>
