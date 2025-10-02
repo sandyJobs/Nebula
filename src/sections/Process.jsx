@@ -5,8 +5,8 @@ const steps = ['Discovery', 'Match with Specialist', 'Delivery', 'Ongoing Suppor
 
 const Process = () => {
   return (
-    <section id="process" className="bg-surface py-56 md:py-64 scroll-mt-24">
-      <div className="max-w-6xl mx-auto px-6">
+    <section id="process" className="bg-surface py-24 scroll-mt-24">
+      <div className="max-w-6xl mx-auto px-6 ">
         <motion.h2 className="font-headline text-h2 text-textPrimary text-center"
           initial={{ opacity: 0, y: 14 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.4 }}>
           How We Work
@@ -14,7 +14,7 @@ const Process = () => {
         <div className="mt-16 grid md:grid-cols-4 gap-9">
           {steps.map((s, idx) => (
             <ParallaxTiltCard key={s}>
-              <motion.div className="card card-gradient card-glow relative text-center"
+              <motion.div className="card card-gradient card-glow relative text-center justify-center md:px-10 md:h-[280px]"
                 whileHover={{ y: -4 }}
                 initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.35, delay: 0.05 * idx }}>
                 <div className="text-textPrimary font-semibold">{s}</div>

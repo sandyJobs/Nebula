@@ -8,7 +8,7 @@ const items = media.portfolio
 
 const Portfolio = () => {
   return (
-    <section id="portfolio" className="bg-surface py-56 md:py-64 scroll-mt-24">
+    <section id="portfolio" className="bg-surface py-24 scroll-mt-24">
       <div className="max-w-6xl mx-auto px-6">
         <motion.h2 className="font-headline text-h2 text-textPrimary text-center"
           initial={{ opacity: 0, y: 14 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.4 }}>
@@ -30,7 +30,7 @@ const Portfolio = () => {
                 <div className="absolute inset-0 p-5 flex flex-col justify-end text-white">
                   <div className="font-semibold text-lg drop-shadow">{it.title}</div>
                   <div className="text-sm text-white text-bold">{it.desc}</div>
-                  <div className="mt-3 inline-flex items-center gap-2 text-electric underline-glow cursor-pointer">View More →</div>
+                  <div className="mt-3 inline-flex items-center gap-2 text-yellow-300 underline-glow cursor-pointer">View More →</div>
                 </div>
                 <m.video
                   className="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-500"

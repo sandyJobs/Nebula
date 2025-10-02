@@ -36,7 +36,13 @@ const Hero = () => {
   return (
     <section id="home" className="relative overflow-hidden bg-midnight scroll-mt-24 min-h-screen flex items-center grain">
       {/* background video (muted, looped) with dark overlay for readability */}
-      <div className="absolute inset-0 z-0" aria-hidden="true">
+      <motion.div
+        className="absolute inset-0 z-0"
+        aria-hidden="true"
+        animate={{ y: [0, -16, 0, 12, 0] }}
+        transition={{ duration: 18, repeat: Infinity, ease: 'easeInOut' }}
+        style={{ willChange: 'transform' }}
+      >
         <video
           className="w-full h-full object-cover parallax-y"
           src="https://cdn.pixabay.com/video/2022/10/12/134591-759723759_large.mp4"
@@ -47,9 +53,21 @@ const Hero = () => {
           preload="metadata"
           style={{ filter: 'saturate(1.08) sepia(0.12) hue-rotate(-8deg) brightness(1.02) contrast(1.03)' }}
         />
-        <div className="cinematic-overlay" />
-        <div className="noise-overlay" />
-      </div>
+        <motion.div
+          className="cinematic-overlay pointer-events-none"
+          aria-hidden="true"
+          animate={{ y: [0, -10, 0, 8, 0], opacity: [0.95, 1, 0.95, 1] }}
+          transition={{ duration: 16, repeat: Infinity, ease: 'easeInOut' }}
+          style={{ willChange: 'transform, opacity' }}
+        />
+        <motion.div
+          className="noise-overlay pointer-events-none"
+          aria-hidden="true"
+          animate={{ y: [0, 8, 0, -8, 0], opacity: [0.9, 1, 0.9, 1] }}
+          transition={{ duration: 12, repeat: Infinity, ease: 'easeInOut' }}
+          style={{ willChange: 'transform, opacity' }}
+        />
+      </motion.div>
       <div className="absolute inset-0 -z-10 animated-gradient opacity-20 pointer-events-none" aria-hidden="true" />
       {/* subtle shimmer overlay to echo butterfly wing iridescence */}
       <motion.div
@@ -78,16 +96,6 @@ const Hero = () => {
         animate={{ y: [0, -12, 0], x: [0, -6, 0], scale: [1, 1.02, 1] }}
         transition={{ duration: 20, repeat: Infinity, ease: 'easeInOut' }}
       />
-
-      {/* <div className="absolute inset-0 opacity-40 pointer-events-none">
-        <Starfield className="w-full h-full" density={160} speed={0.3} />
-      </div> */}
-      {/* tech mesh illustration: mobile-visible and behind text */}
-      {/* <div className="absolute inset-0 pointer-events-none z-0">
-        <div className="absolute top-16 left-1/2 -translate-x-1/2 w-[280px] h-[200px] opacity-30 sm:w-[320px] sm:h-[230px] md:top-20 md:w-[420px] md:h-[300px] lg:left-auto lg:right-0 lg:translate-x-0 lg:top-24 lg:w-[520px] lg:h-[360px]">
-          <HeroTechMesh />
-        </div>
-      </div> */}
       <div className="relative z-20 max-w-6xl mx-auto px-6 py-32 md:py-40 lg:py-44 text-center">
         <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-electric/30 bg-white/80 backdrop-blur shadow-sm">
           <span className="w-2 h-2 rounded-full bg-cta animate-pulse" />
@@ -133,7 +141,7 @@ const Hero = () => {
         <div className="flex flex-col gap-5">
 
           <div className="flex flex-col md:flex-row justify-center gap-4 ">
-          <motion.a whileHover={{ scale: 1.05, y: -2 }} whileTap={{ scale: 0.98 }} href="#about" className="btn btn-cta">Get Started</motion.a>
+          <motion.a whileHover={{ scale: 1.05, y: -2 }} whileTap={{ scale: 0.98 }} href="#about" className="btn-premium btn-cta">Get Started</motion.a>
           <motion.a whileHover={{ scale: 1.05, y: -2 }} whileTap={{ scale: 0.98 }} href="#portfolio" className="btn btn-teal">See Our Work</motion.a>
           </div>
 
