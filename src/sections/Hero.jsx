@@ -132,7 +132,7 @@ const Hero = () => {
         >
         <div className="flex flex-col gap-5">
 
-          <div className="flex justify-center gap-4">
+          <div className="flex flex-col md:flex-row justify-center gap-4 ">
           <motion.a whileHover={{ scale: 1.05, y: -2 }} whileTap={{ scale: 0.98 }} href="#about" className="btn btn-cta">Get Started</motion.a>
           <motion.a whileHover={{ scale: 1.05, y: -2 }} whileTap={{ scale: 0.98 }} href="#portfolio" className="btn btn-teal">See Our Work</motion.a>
           </div>
